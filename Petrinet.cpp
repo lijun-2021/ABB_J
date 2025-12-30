@@ -414,14 +414,14 @@ int Petrinet::seq_Fire(shared_ptr<Node> node,
 		if (trans_name == "t_b.10-11" || trans_name == "t_c.10-11" || trans_name == "t_e.4-5" || trans_name == "t_f.4-5") {
 			group_Fire(node, lambda);
 			cout << "当前激发变迁组【" << node->already_workpiece[node->counter - 1] << "】  λ=" << lambda << "  激发代价" << node->cost << endl;
-			print_marking(node, trans_name, lambda);
+			//print_marking(node, trans_name, lambda);
 		}
 		else {
 
 			single_Fire(trans_name, node, lambda);
 			//if(trans_name=="t_b.5-6.1")
 			cout << "当前激发变迁" << trans_name << "  λ=" << lambda << "  激发代价" << node->cost << endl;
-			print_marking(node, trans_name, lambda);
+			//print_marking(node, trans_name, lambda);
 		}
 		candidate_transition = search_firable_transition(node);
 
