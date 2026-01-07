@@ -19,6 +19,18 @@ mt19937_64 rng(12345);
 double rnd() { return uniform_real_distribution<double>(0, 1)(rng); }
 int rndi(int l, int r) { return uniform_int_distribution<int>(l, r)(rng); }
 
+std::vector<int> door_pre_time;
+std::vector<int> door_work_time;
+std::vector<int> grid_pre_time;
+std::vector<int> grid_work_time;
+std::vector<int> assembly_work_time;
+
+//  Ï¡∑∂»
+std::vector<double> skill_door;
+std::vector<double> skill_grid;
+std::vector<double> skill_assembly;
+
+
 int optimize_assembly(const std::vector<int>& order, const std::vector<int>& door_finish,
     const std::vector<int>& grid_finish, std::vector<JobInfo>& job_time_info,
     long long& inner_iter_count)
