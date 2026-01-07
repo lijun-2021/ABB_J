@@ -18,7 +18,7 @@ int N;
 mt19937_64 rng(12345);
 double rnd() { return uniform_real_distribution<double>(0, 1)(rng); }
 int rndi(int l, int r) { return uniform_int_distribution<int>(l, r)(rng); }
-
+//工件信息数据
 std::vector<int> door_pre_time;
 std::vector<int> door_work_time;
 std::vector<int> grid_pre_time;
@@ -30,31 +30,33 @@ std::vector<double> skill_door;
 std::vector<double> skill_grid;
 std::vector<double> skill_assembly;
 
-
+//总成部分优化
+//返回完工时间
 int optimize_assembly(const std::vector<int>& order, const std::vector<int>& door_finish,
     const std::vector<int>& grid_finish, std::vector<JobInfo>& job_time_info,
     long long& inner_iter_count)
 {
     int n = order.size();
-    std::vector<int> cur(n);
+    std::vector<int> cur(n);//分配总成工位
     for (int i = 0; i < n; i++)
     {
         cur[i] = i % assembly;
     }
 
-    // 评估函数
+    //计算完工时间
     auto eval = [&](const std::vector<int>& assign, bool record_info = false) -> int
         {
-            std::vector<int> position_available(assembly, 0);
+            std::vector<int> position_available(assembly, 0);//工位可用时间初始化
             int robot_cur_time = 0;
             int makespan = 0;
-            std::vector<int> door_out_time(N, 0);
+            std::vector<int> door_out_time(N, 0);// 门板搬出立库时间
             std::vector<int> grid_out_time(N, 0);
 
             for (int i = 0; i < n; i++)
             {
                 int job = order[i];
                 int pos = assign[i];
+                //开始加工时间考虑机器人加工完成时间以及工位空闲时间
                 int robot_start = std::max({ door_finish[job], grid_finish[job], robot_cur_time });
                 int robot_end = robot_start + robot_work_time;
                 int robot_actual_end = std::max(robot_end, position_available[pos]);
@@ -66,6 +68,7 @@ int optimize_assembly(const std::vector<int>& order, const std::vector<int>& doo
                 position_available[pos] = end;
                 makespan = std::max(makespan, end);
 
+                //记录信息
                 if (record_info)
                 {
                     job_time_info[job].robot_start = robot_start;
@@ -79,10 +82,11 @@ int optimize_assembly(const std::vector<int>& order, const std::vector<int>& doo
 
             return makespan;
         };
-
+    //记录初始分配方案
     int cur_val = eval(cur);
     int best_val = cur_val;
     std::vector<int> best_assembly_position = cur;
+    //内层模拟退火
     double T = INNER_T_INIT;
     int no_improve = 0;
     inner_iter_count = 0;
@@ -132,7 +136,7 @@ int evaluate_order(const std::vector<int>& order, std::vector<JobInfo>& job_info
 
     // 门板工序
     std::priority_queue<std::pair<int, int>, std::vector<std::pair<int, int>>,
-        std::greater<std::pair<int, int>>> door_pre_heap;
+        std::greater<std::pair<int, int>>> door_pre_heap;//预装工位的空闲时间与ID 
     for (int i = 0; i < door_pre; ++i)
     {
         door_pre_heap.push({ 0, i });
@@ -141,10 +145,12 @@ int evaluate_order(const std::vector<int>& order, std::vector<JobInfo>& job_info
     std::vector<int> door_work_free_time(door_work, 0);
     std::vector<int> door_cache_free_time(door_work, 0);
     std::vector<int> door_finish(N, 0);
-
+    
+    //门板完工时间
     for (int i = 0; i < N; ++i)
     {
         int job = order[i];
+        //门板预装
         auto [pre_avail, pre_pos] = door_pre_heap.top();
         door_pre_heap.pop();
         int pre_start = pre_avail;
@@ -155,7 +161,7 @@ int evaluate_order(const std::vector<int>& order, std::vector<JobInfo>& job_info
         door_pre_heap.push({ pre_end, pre_pos });
 
         std::priority_queue<std::pair<int, int>, std::vector<std::pair<int, int>>,
-            std::greater<std::pair<int, int>>> work_select_heap;
+            std::greater<std::pair<int, int>>> work_select_heap;  //这个优先队列保留最早能够开始进行加工的工位，
         for (int k = 0; k < door_work; k++)
         {
             int start = std::max({ pre_end, door_work_free_time[k], door_cache_free_time[k] });

@@ -6,7 +6,7 @@
 // 任务数量
 //const int N = 100;
 extern int N;
-// 工作站数量
+// 工人数量
 const int door_pre = 4;
 const int door_work = 16;
 const int grid_pre = 5;
@@ -15,7 +15,7 @@ const int robot = 1;
 const int assembly = 15;
 const int robot_work_time = 6;
 
-// 存储相关
+// 立库库位
 const int TOTAL_STORAGE = 87;
 const int DOOR_STORAGE = 20;
 const int GRID_STORAGE = 60;
@@ -34,14 +34,14 @@ const int INNER_ITER_PER_T = 100;
 const int INNER_NO_IMPROVE_LIMIT = 1000;
 const int INNER_MAX = 100000000;
 
-// 时间数据
+// 工件数据定义
 extern std::vector<int> door_pre_time;
 extern std::vector<int> door_work_time;
 extern std::vector<int> grid_pre_time;
 extern std::vector<int> grid_work_time;
 extern std::vector<int> assembly_work_time;
 
-// 技能系数
+// 工人熟练度定义
 extern std::vector<double> skill_door;
 extern std::vector<double> skill_grid;
 extern std::vector<double> skill_assembly;
