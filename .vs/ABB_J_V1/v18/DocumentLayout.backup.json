@@ -1,0 +1,360 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "E:\\ABB\\git\\0126\\ABB_J\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{89B12466-C31E-46D0-B0E1-5BDB2A76469E}|ABB_J_V1.vcxproj|E:\\ABB\\git\\0126\\ABB_J\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{89B12466-C31E-46D0-B0E1-5BDB2A76469E}|ABB_J_V1.vcxproj|solutionrelative:main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{89B12466-C31E-46D0-B0E1-5BDB2A76469E}|ABB_J_V1.vcxproj|E:\\ABB\\git\\0126\\ABB_J\\A_output.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{89B12466-C31E-46D0-B0E1-5BDB2A76469E}|ABB_J_V1.vcxproj|solutionrelative:A_output.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{89B12466-C31E-46D0-B0E1-5BDB2A76469E}|ABB_J_V1.vcxproj|E:\\ABB\\git\\0126\\ABB_J\\A_optimization.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{89B12466-C31E-46D0-B0E1-5BDB2A76469E}|ABB_J_V1.vcxproj|solutionrelative:A_optimization.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{89B12466-C31E-46D0-B0E1-5BDB2A76469E}|ABB_J_V1.vcxproj|E:\\ABB\\git\\0126\\ABB_J\\Petrinet.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{89B12466-C31E-46D0-B0E1-5BDB2A76469E}|ABB_J_V1.vcxproj|solutionrelative:Petrinet.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{89B12466-C31E-46D0-B0E1-5BDB2A76469E}|ABB_J_V1.vcxproj|E:\\ABB\\git\\0126\\ABB_J\\A_data.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{89B12466-C31E-46D0-B0E1-5BDB2A76469E}|ABB_J_V1.vcxproj|solutionrelative:A_data.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{89B12466-C31E-46D0-B0E1-5BDB2A76469E}|ABB_J_V1.vcxproj|E:\\ABB\\git\\0126\\ABB_J\\A_constants.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{89B12466-C31E-46D0-B0E1-5BDB2A76469E}|ABB_J_V1.vcxproj|solutionrelative:A_constants.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{89B12466-C31E-46D0-B0E1-5BDB2A76469E}|ABB_J_V1.vcxproj|E:\\ABB\\git\\0126\\ABB_J\\DebugTool.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{89B12466-C31E-46D0-B0E1-5BDB2A76469E}|ABB_J_V1.vcxproj|solutionrelative:DebugTool.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{89B12466-C31E-46D0-B0E1-5BDB2A76469E}|ABB_J_V1.vcxproj|E:\\ABB\\git\\0126\\ABB_J\\A_optimization.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{89B12466-C31E-46D0-B0E1-5BDB2A76469E}|ABB_J_V1.vcxproj|solutionrelative:A_optimization.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{89B12466-C31E-46D0-B0E1-5BDB2A76469E}|ABB_J_V1.vcxproj|E:\\ABB\\git\\0126\\ABB_J\\A_output.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{89B12466-C31E-46D0-B0E1-5BDB2A76469E}|ABB_J_V1.vcxproj|solutionrelative:A_output.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{89B12466-C31E-46D0-B0E1-5BDB2A76469E}|ABB_J_V1.vcxproj|E:\\ABB\\git\\0126\\ABB_J\\read_json.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{89B12466-C31E-46D0-B0E1-5BDB2A76469E}|ABB_J_V1.vcxproj|solutionrelative:read_json.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\ABB\\git\\0126\\ABB_J\\data\\ABB_DB_token_1.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:data\\ABB_DB_token_1.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{89B12466-C31E-46D0-B0E1-5BDB2A76469E}|ABB_J_V1.vcxproj|E:\\ABB\\git\\0126\\ABB_J\\Process.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{89B12466-C31E-46D0-B0E1-5BDB2A76469E}|ABB_J_V1.vcxproj|solutionrelative:Process.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{89B12466-C31E-46D0-B0E1-5BDB2A76469E}|ABB_J_V1.vcxproj|E:\\ABB\\git\\0126\\ABB_J\\Petrinet.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{89B12466-C31E-46D0-B0E1-5BDB2A76469E}|ABB_J_V1.vcxproj|solutionrelative:Petrinet.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{89B12466-C31E-46D0-B0E1-5BDB2A76469E}|ABB_J_V1.vcxproj|E:\\ABB\\git\\0126\\ABB_J\\DebugTool.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{89B12466-C31E-46D0-B0E1-5BDB2A76469E}|ABB_J_V1.vcxproj|solutionrelative:DebugTool.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{89B12466-C31E-46D0-B0E1-5BDB2A76469E}|ABB_J_V1.vcxproj|E:\\ABB\\git\\0126\\ABB_J\\Token.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{89B12466-C31E-46D0-B0E1-5BDB2A76469E}|ABB_J_V1.vcxproj|solutionrelative:Token.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{89B12466-C31E-46D0-B0E1-5BDB2A76469E}|ABB_J_V1.vcxproj|E:\\ABB\\git\\0126\\ABB_J\\Transition.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{89B12466-C31E-46D0-B0E1-5BDB2A76469E}|ABB_J_V1.vcxproj|solutionrelative:Transition.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{89B12466-C31E-46D0-B0E1-5BDB2A76469E}|ABB_J_V1.vcxproj|E:\\ABB\\git\\0126\\ABB_J\\Process.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{89B12466-C31E-46D0-B0E1-5BDB2A76469E}|ABB_J_V1.vcxproj|solutionrelative:Process.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{89B12466-C31E-46D0-B0E1-5BDB2A76469E}|ABB_J_V1.vcxproj|E:\\ABB\\git\\0126\\ABB_J\\Place.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{89B12466-C31E-46D0-B0E1-5BDB2A76469E}|ABB_J_V1.vcxproj|solutionrelative:Place.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{89B12466-C31E-46D0-B0E1-5BDB2A76469E}|ABB_J_V1.vcxproj|E:\\ABB\\git\\0126\\ABB_J\\Token.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{89B12466-C31E-46D0-B0E1-5BDB2A76469E}|ABB_J_V1.vcxproj|solutionrelative:Token.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 8,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1:0:{e8b06f52-6d01-11d2-aa7d-00c04f990343}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{6d4078d1-5951-4ed1-ac0e-0a8099c1cce5}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "A_optimization.cpp",
+              "DocumentMoniker": "E:\\ABB\\git\\0126\\ABB_J\\A_optimization.cpp",
+              "RelativeDocumentMoniker": "A_optimization.cpp",
+              "ToolTip": "E:\\ABB\\git\\0126\\ABB_J\\A_optimization.cpp",
+              "RelativeToolTip": "A_optimization.cpp",
+              "ViewState": "AgIAAKYBAAAAAAAAAAAAALkBAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-01-26T12:25:32.884Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "A_optimization.h",
+              "DocumentMoniker": "E:\\ABB\\git\\0126\\ABB_J\\A_optimization.h",
+              "RelativeDocumentMoniker": "A_optimization.h",
+              "ToolTip": "E:\\ABB\\git\\0126\\ABB_J\\A_optimization.h",
+              "RelativeToolTip": "A_optimization.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-01-26T12:24:26.486Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "A_data.h",
+              "DocumentMoniker": "E:\\ABB\\git\\0126\\ABB_J\\A_data.h",
+              "RelativeDocumentMoniker": "A_data.h",
+              "ToolTip": "E:\\ABB\\git\\0126\\ABB_J\\A_data.h",
+              "RelativeToolTip": "A_data.h",
+              "ViewState": "AgIAACIAAAAAAAAAAAAYwCwAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-01-26T12:23:58.684Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "A_constants.h",
+              "DocumentMoniker": "E:\\ABB\\git\\0126\\ABB_J\\A_constants.h",
+              "RelativeDocumentMoniker": "A_constants.h",
+              "ToolTip": "E:\\ABB\\git\\0126\\ABB_J\\A_constants.h",
+              "RelativeToolTip": "A_constants.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-01-26T12:23:02.392Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "main.cpp",
+              "DocumentMoniker": "E:\\ABB\\git\\0126\\ABB_J\\main.cpp",
+              "RelativeDocumentMoniker": "main.cpp",
+              "ToolTip": "E:\\ABB\\git\\0126\\ABB_J\\main.cpp*",
+              "RelativeToolTip": "main.cpp*",
+              "ViewState": "AgIAAIUAAAAAAAAAAAAYwJEAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-01-26T12:18:18.444Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Petrinet.cpp",
+              "DocumentMoniker": "E:\\ABB\\git\\0126\\ABB_J\\Petrinet.cpp",
+              "RelativeDocumentMoniker": "Petrinet.cpp",
+              "ToolTip": "E:\\ABB\\git\\0126\\ABB_J\\Petrinet.cpp",
+              "RelativeToolTip": "Petrinet.cpp",
+              "ViewState": "AgIAAC0AAAAAAAAAAAAAACsCAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-01-26T12:18:18.45Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "A_output.cpp",
+              "DocumentMoniker": "E:\\ABB\\git\\0126\\ABB_J\\A_output.cpp",
+              "RelativeDocumentMoniker": "A_output.cpp",
+              "ToolTip": "E:\\ABB\\git\\0126\\ABB_J\\A_output.cpp",
+              "RelativeToolTip": "A_output.cpp",
+              "ViewState": "AgIAAGYAAAAAAAAAAAAAAHQAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-01-26T12:18:18.476Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "A_output.h",
+              "DocumentMoniker": "E:\\ABB\\git\\0126\\ABB_J\\A_output.h",
+              "RelativeDocumentMoniker": "A_output.h",
+              "ToolTip": "E:\\ABB\\git\\0126\\ABB_J\\A_output.h",
+              "RelativeToolTip": "A_output.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-01-26T12:18:18.476Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "ABB_DB_token_1.json",
+              "DocumentMoniker": "E:\\ABB\\git\\0126\\ABB_J\\data\\ABB_DB_token_1.json",
+              "RelativeDocumentMoniker": "data\\ABB_DB_token_1.json",
+              "ToolTip": "E:\\ABB\\git\\0126\\ABB_J\\data\\ABB_DB_token_1.json",
+              "RelativeToolTip": "data\\ABB_DB_token_1.json",
+              "ViewState": "AgIAAKoCAAAAAAAAAAAAAHoCAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-01-26T12:18:18.48Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "DebugTool.cpp",
+              "DocumentMoniker": "E:\\ABB\\git\\0126\\ABB_J\\DebugTool.cpp",
+              "RelativeDocumentMoniker": "DebugTool.cpp",
+              "ToolTip": "E:\\ABB\\git\\0126\\ABB_J\\DebugTool.cpp",
+              "RelativeToolTip": "DebugTool.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAHwAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-01-26T12:18:18.486Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "Token.cpp",
+              "DocumentMoniker": "E:\\ABB\\git\\0126\\ABB_J\\Token.cpp",
+              "RelativeDocumentMoniker": "Token.cpp",
+              "ToolTip": "E:\\ABB\\git\\0126\\ABB_J\\Token.cpp",
+              "RelativeToolTip": "Token.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-01-26T12:18:18.432Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "DebugTool.h",
+              "DocumentMoniker": "E:\\ABB\\git\\0126\\ABB_J\\DebugTool.h",
+              "RelativeDocumentMoniker": "DebugTool.h",
+              "ToolTip": "E:\\ABB\\git\\0126\\ABB_J\\DebugTool.h",
+              "RelativeToolTip": "DebugTool.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADsAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-01-26T12:18:18.483Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "read_json.h",
+              "DocumentMoniker": "E:\\ABB\\git\\0126\\ABB_J\\read_json.h",
+              "RelativeDocumentMoniker": "read_json.h",
+              "ToolTip": "E:\\ABB\\git\\0126\\ABB_J\\read_json.h",
+              "RelativeToolTip": "read_json.h",
+              "ViewState": "AgIAAKIAAAAAAAAAAAAAAK4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-01-26T12:18:18.483Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Token.h",
+              "DocumentMoniker": "E:\\ABB\\git\\0126\\ABB_J\\Token.h",
+              "RelativeDocumentMoniker": "Token.h",
+              "ToolTip": "E:\\ABB\\git\\0126\\ABB_J\\Token.h",
+              "RelativeToolTip": "Token.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-01-26T12:18:18.484Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "Transition.h",
+              "DocumentMoniker": "E:\\ABB\\git\\0126\\ABB_J\\Transition.h",
+              "RelativeDocumentMoniker": "Transition.h",
+              "ToolTip": "E:\\ABB\\git\\0126\\ABB_J\\Transition.h",
+              "RelativeToolTip": "Transition.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-01-26T12:18:18.484Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "Place.h",
+              "DocumentMoniker": "E:\\ABB\\git\\0126\\ABB_J\\Place.h",
+              "RelativeDocumentMoniker": "Place.h",
+              "ToolTip": "E:\\ABB\\git\\0126\\ABB_J\\Place.h",
+              "RelativeToolTip": "Place.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-01-26T12:18:18.484Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Process.h",
+              "DocumentMoniker": "E:\\ABB\\git\\0126\\ABB_J\\Process.h",
+              "RelativeDocumentMoniker": "Process.h",
+              "ToolTip": "E:\\ABB\\git\\0126\\ABB_J\\Process.h",
+              "RelativeToolTip": "Process.h",
+              "ViewState": "AgIAAHAAAAAAAAAAAAAkwCgAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-01-26T12:18:18.484Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "Process.cpp",
+              "DocumentMoniker": "E:\\ABB\\git\\0126\\ABB_J\\Process.cpp",
+              "RelativeDocumentMoniker": "Process.cpp",
+              "ToolTip": "E:\\ABB\\git\\0126\\ABB_J\\Process.cpp",
+              "RelativeToolTip": "Process.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACgAAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-01-26T12:18:18.484Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Petrinet.h",
+              "DocumentMoniker": "E:\\ABB\\git\\0126\\ABB_J\\Petrinet.h",
+              "RelativeDocumentMoniker": "Petrinet.h",
+              "ToolTip": "E:\\ABB\\git\\0126\\ABB_J\\Petrinet.h",
+              "RelativeToolTip": "Petrinet.h",
+              "ViewState": "AgIAABcAAAAAAAAAAAAkwCYAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-01-26T12:18:18.486Z"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 201,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -10,7 +10,7 @@
 #include <iomanip>
 #include <cmath>
 #include <random>
-
+#include <unordered_set>
 using namespace std;
 using namespace chrono;
 int N;
@@ -24,11 +24,112 @@ std::vector<int> door_work_time;
 std::vector<int> grid_pre_time;
 std::vector<int> grid_work_time;
 std::vector<int> assembly_work_time;
+std::vector<string> series; //从json中读取的系列号信息
+std::vector<std::vector<int>> grid_batches; //已经分好组的网格预装
 
-// 熟练度
+std::vector<int> batch_series_id; // 数字表示每个批次的系列号，方便查找
+std::unordered_map<int, std::vector<int>> series_id_to_batches; // 系列ID->所属批次索引  
+//2->[2,3]比如数字系列号未2，它对应的批次号为2，3，用来记录同一系列号分几组的情况
+std::unordered_map<int, int> job_to_batch_idx;    // 工件ID->批次索引
+
+// 人员熟练度
 std::vector<double> skill_door;
 std::vector<double> skill_grid;
 std::vector<double> skill_assembly;
+
+//网格预装工件按照系列号进行分组
+std::vector<std::vector<int>> calculate_grid_pre_order(const std::vector<int>& order) {
+    //遍历工件id,放入哈希表
+    std::unordered_map<std::string, std::vector<int>> diff_series; //型号->工件id
+    for (int job_id : order)
+    {
+        std::string job_type = series[job_id];
+        diff_series[job_type].push_back(job_id);
+    }
+
+    //对同一型号的工件进行平均分组
+    std::vector<std::vector<int>> all_batches;  //存储最终分配信息
+    batch_series_id.clear();
+    series_id_to_batches.clear();
+    job_to_batch_idx.clear();
+    int total_series_num = 0;//后面为了简化字符串匹配，这里将型号通过数字反映
+    for (auto& group : diff_series) {
+        //std::string type = group.first;
+
+        int current_series_id = total_series_num++;
+        std::vector<int> jobs = group.second;
+        int total = jobs.size();//对于一种工件有多少个
+
+        int batch_num = ceil((double)total / 10); //向上取整ceil
+        int base_num = total / batch_num;
+        int extra = total % batch_num;
+
+        //开始分组
+        int start = 0;
+        std::vector<int> current_series_batches;
+        for (int i = 0; i < batch_num; i++) {
+            std::vector<int> one_batch;//记录每一组的数据
+            int batch_size = base_num;
+            if (i < extra) {
+                batch_size += 1;  //把余数进行分配
+            }
+
+            for (int j = 0; j < batch_size; j++) {
+                if (start < total) {
+                    one_batch.push_back(jobs[start]);
+                    start++;
+                }
+            }
+
+            int batch_idx = all_batches.size();
+            all_batches.push_back(one_batch);//分好的每一组合并
+            batch_series_id.push_back(current_series_id); //表示一个分组的序列号
+            current_series_batches.push_back(batch_idx);
+
+            for (int job : one_batch) //记录工件->批次的映射
+            {
+                job_to_batch_idx[job] = batch_idx;
+            }
+        }
+        series_id_to_batches[current_series_id] = current_series_batches; //系列id->所属批次映射
+
+    }
+    return all_batches;
+}
+
+void init_global_batches() {
+    std::vector<int> order(N);
+    for (int i = 0; i < N; i++) {
+        order[i] = i;
+    }
+
+    grid_batches = calculate_grid_pre_order(order);
+}
+
+//计算一组网格的加工时间系数，如果一起加工的多，那么会更快，一次最多加工10个工件
+double get_batch_efficient(int batch_size)
+{
+    if (batch_size == 1)
+    {
+        return 1.0;
+    }
+    else if (batch_size >= 2 && batch_size <= 4)
+    {
+        return 0.9;
+    }
+    else if (batch_size >= 5 && batch_size <= 7)
+    {
+        return 0.8;
+    }
+    else if (batch_size >= 8 && batch_size <= 10)
+    {
+        return 0.7;
+    }
+    else
+    {
+        return 10;
+    }
+}
 
 //总成部分优化
 //返回完工时间
@@ -183,40 +284,65 @@ int evaluate_order(const std::vector<int>& order, std::vector<JobInfo>& job_info
     }
 
     // 网格加工
-    std::priority_queue<std::pair<int, int>, std::vector<std::pair<int, int>>,
-        std::greater<std::pair<int, int>>> grid_pre_heap;
-    for (int i = 0; i < grid_pre; ++i)
-    {
-        grid_pre_heap.push({ 0, i });
-    }
+    std::vector<bool> batch_pre_completed(grid_batches.size(), false);//记录每个预装分组是否完成
+    std::unordered_set<int> series_completed; // 已完成的系列数字ID
+
     std::vector<int> grid_work_free_time(grid_work, 0);
     std::vector<int> grid_cache_free_time(grid_work, 0);
     std::vector<int> grid_finish(N, 0);
 
+    int grid_pre_free_time = 0; //网格加工的空闲时间
+    std::vector<int> grid_pre_end_time(N, 0); //记录每个工件预装完成时间
+
     for (int i = 0; i < N; ++i)
     {
         int job = order[i];
-        auto [pre_avail, pre_pos] = grid_pre_heap.top();
-        grid_pre_heap.pop();
-        int pre_start = pre_avail;
-        int pre_end = pre_start + grid_pre_time[job];
-        job_info[job].grid_pre_pos = pre_pos;
-        job_info[job].grid_pre_start = pre_start;
-        job_info[job].grid_pre_end = pre_end;
-        grid_pre_heap.push({ pre_end, pre_pos });
+        int batch_idx = job_to_batch_idx[job]; // 找到工件分配的批次
+        int current_series_id = batch_series_id[batch_idx]; // 查批次的系列数字ID
+        const auto& batch = grid_batches[batch_idx];
 
+        if (series_completed.find(current_series_id) == series_completed.end())  //如果这一组没有预装完成，那么要将这个系列号的所有工件进行加工
+        {
+            // 遍历该系列的所有批次，连续加工
+            for (int bid : series_id_to_batches[current_series_id]) {
+                if (batch_pre_completed[bid]) continue;
+                const auto& batch = grid_batches[bid];
+                int batch_size = batch.size();
+                int first_job = batch[0]; //取第一个工件的时间表示一组时间
+                int single_pre_time = grid_pre_time[first_job];
+                int batch_pre_time = round(single_pre_time * batch_size * get_batch_efficient(batch_size) / grid_pre); //计算一组工件的完工时间
+                int batch_pre_start = grid_pre_free_time;
+                int batch_pre_end = batch_pre_start + batch_pre_time;//计算一组工件完成时间
+
+                for (int job : batch)
+                {
+                    job_info[job].grid_pre_pos = 0;
+                    job_info[job].grid_pre_start = batch_pre_start;
+                    job_info[job].grid_pre_end = batch_pre_end;
+                    grid_pre_end_time[job] = batch_pre_end;
+                }
+                grid_pre_free_time = batch_pre_end;
+                batch_pre_completed[bid] = true;
+
+            }
+            series_completed.insert(current_series_id);
+        }
+        int job_pre_end = grid_pre_end_time[job];
+
+
+//网格加工
         std::priority_queue<std::pair<int, int>, std::vector<std::pair<int, int>>,
             std::greater<std::pair<int, int>>> work_select_heap;
         for (int k = 0; k < grid_work; k++)
         {
-            int start = std::max({ pre_end, grid_work_free_time[k], grid_cache_free_time[k] });
+            int start = std::max({ job_pre_end, grid_work_free_time[k], grid_cache_free_time[k] });
             int work_time = round(grid_work_time[job] * skill_grid[k]);
             int end = start + work_time;
             work_select_heap.push({ end, k });
         }
 
         auto [best_end, best_pos] = work_select_heap.top();
-        int work_start = std::max({ pre_end, grid_work_free_time[best_pos], grid_cache_free_time[best_pos] });
+        int work_start = std::max({ job_pre_end, grid_work_free_time[best_pos], grid_cache_free_time[best_pos] });
 
         job_info[job].grid_work_pos = best_pos;
         job_info[job].grid_work_start = work_start;
@@ -237,6 +363,7 @@ int evaluate_order(const std::vector<int>& order, std::vector<JobInfo>& job_info
 OutputData run_optimization() {
     // 初始化任务加工顺序
     std::vector<int> cur_order(N);
+    init_global_batches();
     std::iota(cur_order.begin(), cur_order.end(), 0);
 
     std::vector<JobInfo> job_info(N);

@@ -46,7 +46,7 @@ struct Station {
 struct OutputData {
     std::vector<std::vector<int>> door_pre;    // 门板预装: [工作站][任务ID,任务ID,...]
     std::vector<std::vector<int>> door_work;   // 门板加工: [工作站][任务ID,任务ID,...]
-    std::vector<std::vector<int>> grid_pre;    // 网格预装: [工作站][任务ID,任务ID,...]
+    std::vector<std::vector<int>> grid_pre;    // 网格预装: 等价于一个工作站[批次][任务ID,任务ID,...]
     std::vector<std::vector<int>> grid_work;   // 网格加工: [工作站][任务ID,任务ID,...]
     std::vector<int> robot_tasks;              // 机器人任务序列[任务ID,任务ID,...]
     std::vector<std::vector<int>> assembly;    // 总成加工: [工作站][任务ID,任务ID,...]

@@ -171,6 +171,7 @@ inline void read_tokens_json(Petrinet& petrinet) {
     grid_pre_time.clear();
     grid_work_time.clear();
     assembly_work_time.clear();
+    series.clear();
 
     //auto test = doc["original_state"].GetObject().begin()->value["inplace"].GetString();
     for (auto itr1 = doc["original_state"].GetObject().begin(); itr1 != doc["original_state"].GetObject().end(); ++itr1) {
@@ -191,7 +192,7 @@ inline void read_tokens_json(Petrinet& petrinet) {
         grid_pre_time.push_back(workpiece_ptr->per_worktime[3]);
         grid_work_time.push_back(workpiece_ptr->per_worktime[4]);
         assembly_work_time.push_back(workpiece_ptr->per_worktime[8]);
-
+        series.push_back(workpiece_ptr->serial_id);
 
 
         petrinet.workpiece.emplace(workpiece_ptr->ID, workpiece_ptr);

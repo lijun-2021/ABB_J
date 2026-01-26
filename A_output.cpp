@@ -36,13 +36,23 @@ OutputData generate_output_data(const std::vector<JobInfo>& job_info) {
     }
 
     // 网格预装
+    std::unordered_map<int, std::vector<int>> start_to_jobs;
     for (const auto& info : job_info) {
-        output.grid_pre[info.grid_pre_pos].push_back(info.job_id);
+        start_to_jobs[info.grid_pre_start].push_back(info.job_id); //以开始时间作为键进行分类
     }
-    for (auto& station : output.grid_pre) {
-        std::sort(station.begin(), station.end(), [&](int a, int b) {
-            return job_info[a].grid_pre_start < job_info[b].grid_pre_start;
-            });
+    std::vector<int> batch_start_times;
+    for (const auto& pair : start_to_jobs) {
+        batch_start_times.push_back(pair.first);
+    }
+    std::sort(batch_start_times.begin(), batch_start_times.end());
+
+    output.grid_pre.clear();
+    for (int start_time : batch_start_times) {
+        // 取出该批次的所有工件ID，按job_id排序
+        std::vector<int> batch_jobs = start_to_jobs[start_time];
+        std::sort(batch_jobs.begin(), batch_jobs.end());
+        // 加入批次列表
+        output.grid_pre.push_back(batch_jobs);
     }
 
     // 网格加工
@@ -75,8 +85,7 @@ OutputData generate_output_data(const std::vector<JobInfo>& job_info) {
     return output;
 }
 
-void 
-_output(const OutputData& output) {
+void print_output(const OutputData& output) {
     // 打印门板预装
     std::cout << "\n===== 门板预装 =====" << std::endl;
     for (int i = 0; i < output.door_pre.size(); ++i) {
