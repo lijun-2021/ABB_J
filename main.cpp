@@ -41,20 +41,109 @@ int main() {
 
 	//调度结果
 	OutputData result = run_optimization();
-	vector<vector<int>> door_pre_workpiece_seq = result.door_pre;
-	vector<vector<int>> door_workpiece_workplace_seq = result.door_work;
-	vector<vector<int>> grid_pre_workpiece_seq = result.grid_pre;
-	vector<vector<int>> grid_workpiece_workplace_seq = result.grid_work;
-	vector<int> robot_workpiece_seq = result.robot_tasks;
-	vector<vector<int>> assembly_workpiece_workplace_seq = result.assembly;
+	//vector<vector<int>> door_pre_workpiece_seq = result.door_pre;
+	//vector<vector<int>> door_workpiece_workplace_seq = result.door_work;
+	//vector<vector<int>> grid_pre_workpiece_seq = result.grid_pre;
+	//vector<vector<int>> grid_workpiece_workplace_seq = result.grid_work;
+	//vector<int> robot_workpiece_seq = result.robot_tasks;
+	//vector<vector<int>> assembly_workpiece_workplace_seq = result.assembly;
+
+	vector<vector<int>> door_pre_workpiece_seq = {
+{94, 34, 35, 39, 67, 89, 82, 47, 50, 22, 58, 57, 87, 40, 23, 75, 24, 93, 18, 72, 69, 49, 26, 63, 55, 4},
+	{97, 0, 90, 83, 1, 8, 21, 48, 10, 96, 54, 51, 46, 85, 12, 37, 79, 74, 19, 45, 2, 70, 17},
+	{7, 31, 65, 13, 71, 42, 68, 11, 29, 80, 41, 62, 16, 15, 66, 14, 77, 56, 91, 76, 78, 28, 25, 61, 92, 9, 98, 33, 59, 60, 30},
+	{81, 86, 3, 27, 88, 36, 84, 52, 53, 64, 73, 6, 44, 95, 99, 38, 43, 5, 20, 32}
+	};
+	vector<vector<int>> door_workpiece_workplace_seq = {
+	{97, 42, 47, 96, 76, 79, 70},
+	{7, 0, 27, 87, 93, 59},
+	{31, 88, 84, 73, 69, 5},
+	{39, 41, 57, 44, 92, 9, 98, 43, 4},
+	{67, 16, 51, 12, 33, 17},
+	{94, 86, 83, 21, 58, 91, 24, 26},
+	{34, 11, 36, 52, 85, 25, 2},
+	{68, 15, 64, 18, 19},
+	{8, 62, 40, 72, 63},
+	{90, 82, 22, 53, 95, 61, 38},
+	{81, 89, 50, 77, 28, 55},
+	{10, 6, 37, 60},
+	{35, 80, 54, 78, 49, 30},
+	{71, 1, 66, 23, 45},
+	{65, 3, 48, 56, 75, 74, 32},
+	{13, 29, 14, 46, 99, 20}
+	};
+	vector<vector<int>> grid_pre_workpiece_seq = {
+	{94},
+	{96, 97},
+	{0, 1, 2, 3, 4, 5, 6, 7, 8, 9},
+	{81, 82},
+	{23, 24, 25, 26, 27, 28, 29, 30, 31},
+	{32, 33, 34, 35, 36, 37, 38, 39},
+	{61, 62, 63, 64, 65, 66, 67, 68, 69},
+	{85, 86, 87, 88},
+	{10, 11, 12, 13, 14, 15, 16},
+	{17, 18, 19, 20, 21, 22},
+	{89, 90, 91},
+	{70, 71, 72},
+	{40, 41, 42},
+	{83, 84},
+	{73, 74, 75, 76, 77, 78, 79, 80},
+	{46, 47, 48},
+	{49, 50},
+	{51, 52, 53, 54, 55, 56, 57, 58, 59, 60},
+	{43, 44, 45},
+	{95},
+	{92, 93},
+	{99},
+	{98}
+	};
+	vector<vector<int>> grid_workpiece_workplace_seq = {
+	{67, 29, 84, 51, 92, 59},
+	{68, 88, 22, 66, 87, 64, 73, 76, 85, 75, 44, 70, 17},
+	{97, 65, 71, 80, 50, 52, 12, 99, 45},
+	{39, 1, 77, 53, 18, 72, 74, 26, 2},
+	{7, 31, 13, 89, 41, 54, 25, 98, 55},
+	{35, 11, 21, 36, 48, 56, 61, 37, 43},
+	{0, 86, 42, 57, 93, 33, 5, 30},
+	{3, 82, 62, 15, 96, 40, 6, 23, 95, 79, 38, 20, 32},
+	{27, 8, 16, 10, 14, 91, 46, 78, 24, 9, 19, 63, 60},
+	{94, 81, 34, 90, 83, 47, 58, 28, 69, 49, 4}
+	};
+	vector<int> robot_workpiece_seq = {
+	94, 97, 7, 81, 31, 65, 34, 0, 86, 13, 35, 90, 39, 71, 67, 42,
+	83, 89, 68, 3, 11, 27, 29, 88, 82, 80, 1, 47, 8, 41, 21, 62,
+	50, 36, 16, 48, 84, 22, 15, 10, 58, 66, 96, 14, 57, 52, 77,
+	54, 56, 87, 53, 51, 91, 64, 46, 73, 40, 76, 85, 6, 23, 75,
+	44, 78, 95, 24, 28, 93, 25, 12, 61, 99, 18, 37, 92, 79, 72,
+	9, 69, 98, 74, 49, 33, 38, 19, 59, 26, 43, 63, 45, 55, 5,
+	60, 2, 20, 70, 4, 32, 30, 17
+	};
+	vector<vector<int>> assembly_workpiece_workplace_seq = {
+	{94, 42, 21, 52, 23, 79, 55},
+	{97, 83, 62, 77, 75, 72, 5},
+	{7, 89, 50, 54, 44, 9, 60},
+	{81, 68, 36, 56, 78, 69, 2},
+	{31, 3, 16, 87, 95, 98, 20},
+	{65, 11, 48, 53, 24, 74, 70},
+	{34, 27, 84, 51, 28, 49, 4},
+	{0, 29, 22, 91, 93, 33, 32},
+	{86, 88, 15, 64, 25, 38, 30},
+	{13, 82, 10, 46, 12, 19, 17},
+	{35, 80, 58, 73, 61, 59},
+	{90, 1, 66, 40, 99, 26},
+	{39, 47, 96, 76, 18, 43},
+	{71, 8, 14, 85, 37, 63},
+	{67, 41, 57, 6, 92, 45}
+	};
 
 	pn.init_door_places = { "pb1_1","pb1_2","pb1_3","pb1_4" };//（固定表）
-	pn.init_grid_places = { "pc1_1","pc1_2","pc1_3","pc1_4","pc1_5" };//（固定表)
-	pn.door_workpiece_place = { "pb4_1","pb4_2" ,"pb4_3" ,"pb4_4" ,"pb4_5" ,"pb4_6" ,"pb4_7" ,"pb4_8" ,"pb4_9" ,"pb4_10" ,"pb4_11" ,"pb4_12" ,"pb4_13" ,"pb4_14" ,"pb4_15" ,"pb4_16" };	//传入的门板数组转成库所名（固定表）（0-15：pb4_1-pb4-16）
+	pn.init_grid_places = { "pc1" };//（固定表)
+	pn.door_workpiece_place = {"pb4_1","pb4_2" ,"pb4_3" ,"pb4_4" ,"pb4_5" ,"pb4_6" ,"pb4_7" ,"pb4_8" ,"pb4_9" ,"pb4_10" ,"pb4_11" ,"pb4_12" ,"pb4_13" ,"pb4_14" ,"pb4_15" ,"pb4_16" };	//传入的门板数组转成库所名（固定表）（0-15：pb4_1-pb4-16）
 	pn.grid_workpiece_place = { "pc4_1","pc4_2" ,"pc4_3" ,"pc4_4" ,"pc4_5" ,"pc4_6" ,"pc4_7" ,"pc4_8" ,"pc4_9" ,"pc4_10" };	//传入的网格数组转成库所名（固定表）（0-9：pc4_1-pc4-10）
+	pn.pre_grid_workpiece_place = { "pc2_1","pc2_2" ,"pc2_3" ,"pc2_4" ,"pc2_5" ,"pc2_6" ,"pc2_7" ,"pc2_8" ,"pc2_9" ,"pc2_10" };
 	pn.assembly_workpiece_place = { "pd2_1","pd2_2" ,"pd2_3" ,"pd2_4" ,"pd2_5" ,"pd2_6" ,"pd2_7" ,"pd2_8" ,"pd2_9" ,"pd2_10" ,"pd2_11" ,"pd2_12" ,"pd2_13" ,"pd2_14" ,"pd2_15" };//传入的总成数组转成库所名（固定表）（0-14：pd2_1-pd2-15）
 
 	pn.seq_Fire(node, door_pre_workpiece_seq, grid_pre_workpiece_seq, robot_workpiece_seq, door_workpiece_workplace_seq, grid_workpiece_workplace_seq, assembly_workpiece_workplace_seq);
-
+	int a = 0;
 	return 0;
 }

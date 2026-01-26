@@ -126,7 +126,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="A_constants.cpp" />
     <ClCompile Include="A_optimization.cpp" />
     <ClCompile Include="A_output.cpp" />
     <ClCompile Include="DebugTool.cpp" />

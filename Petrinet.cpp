@@ -81,7 +81,11 @@ bool Petrinet::judge_possible_firable_trans(const shared_ptr<Node>& curr_node, c
 	//1.前置库所中都应该有托肯
 
 	for (const string& pre_place_name : tran_ptr->pre_places) {
-		if (m.find(pre_place_name) == m.end()) return false;
+		if (m.find(pre_place_name) == m.end())
+		{
+			//if (trans_name == "t_c.3-4.1")cout << "原因1" << endl;
+			return false;
+		}
 	}
 
 	//2.后置库所满足容量要求
@@ -90,8 +94,11 @@ bool Petrinet::judge_possible_firable_trans(const shared_ptr<Node>& curr_node, c
 		if (p_it == places.end()) continue;
 		if (p_it->second->capacity == 1) {
 			// 如果 multimap m 中已有 token，则不可激发
-			if (m.find(post_place_name) != m.end())return false;
+			if (m.find(post_place_name) != m.end()) {
+				//if (trans_name == "t_c.3-4.1")cout << "原因2" << endl;
 
+				return false;
+			}
 		}
 	}
 
@@ -105,6 +112,7 @@ bool Petrinet::judge_possible_firable_trans(const shared_ptr<Node>& curr_node, c
 				if (token_it != m.end()) {
 					auto& workpiece_assemble_place = token_it->second->token_attribute->workpiece->assemble_place[brench_place];
 					if (m.find(workpiece_assemble_place) != m.end()) {
+						//if (trans_name == "t_c.3-4.1")cout << "原因3.1" << endl;
 						return false;
 					}
 				}
@@ -114,6 +122,7 @@ bool Petrinet::judge_possible_firable_trans(const shared_ptr<Node>& curr_node, c
 				if (token_it != m.end()) {
 					auto& workpiece_assemble_place = token_it->second->token_attribute->workpiece->assemble_place[brench_place];
 					if (token_it->second->token_attribute->workpiece->numid != all_workpiece_pre_seq[workpiece_assemble_place][place_workpiece_counter[workpiece_assemble_place]]) {
+						//if (trans_name == "t_c.3-4.1")cout << "原因3.1" << endl;
 						return false;
 					}
 
@@ -122,26 +131,91 @@ bool Petrinet::judge_possible_firable_trans(const shared_ptr<Node>& curr_node, c
 		}
 	}
 
-	//4.token分支选择特定库位进入
+	////4.token分支选择特定库位进入
+	////pb4_1-pb4-16前的变迁
+	//else if (tran_ptr->place_check) {
+	//	string& brench_place = tran_ptr->pre_places[0];
+	//	auto it = m.find(brench_place);
+	//	bool check = false;
+	//	if (it != m.end()) {
+	//		auto& token_it = it->second;
+	//		for (string place : tran_ptr->post_places) {
+	//			if (token_it->token_attribute->workpiece->assemble_place[brench_place] != place)continue;
+	//			check = true;
+	//		}
+	//		if (!check) {
+	//			return false;
+	//		}
+	//	}
+	//}
+	//4.修改版的token分支库所
 	//pb4_1-pb4-16前的变迁
-	else if (tran_ptr->place_check) {
+	if (tran_ptr->place_check) {
 		string& brench_place = tran_ptr->pre_places[0];
-		auto it = m.find(brench_place);
+		string work_place;
+		for (auto& place : tran_ptr->post_places) {
+			if (places[place]->color == PlaceColor::Workpiece) {
+				work_place = place;
+				break;
+			}
+		}
+
+
+		auto range = m.equal_range(brench_place);
 		bool check = false;
-		if (it != m.end()) {
-			auto& token_it = it->second;
-			for (string place : tran_ptr->post_places) {
-				if (token_it->token_attribute->workpiece->assemble_place[brench_place] != place)continue;
+
+		for (auto it = range.first; it != range.second; ++it) {
+			//if (trans_name == "t_c.3-4.1")cout << it->second->token_attribute->workpiece->numid << endl;
+			if (places[brench_place]->capacity == 1) {
+				if (it->second->token_attribute->workpiece->assemble_place[brench_place] != work_place)continue;
 				check = true;
 			}
-			if (!check) {
-				return false;
+			else {
+				if (it->second->token_attribute->workpiece->assemble_place[brench_place] == work_place &&
+					all_workpiece_pre_seq[work_place][place_workpiece_counter[work_place]] == it->second->token_attribute->workpiece->numid) {
+					check = true;
+					//if (check && trans_name == "t_b.3-4.6")cout <<"!!!"<< it->second->token_attribute->workpiece->assemble_place[brench_place]<<" "<< all_workpiece_pre_seq[work_place][place_workpiece_counter[work_place]]<<endl;
+				}
+			}
+		}
+
+		if (!check) {
+			//if (trans_name == "t_b.3-4.1") {
+			//	//cout << it->second->token_attribute->workpiece->numid<<endl;
+			//	cout << place_workpiece_counter[work_place] << endl;
+			//	cout << all_workpiece_pre_seq[work_place][place_workpiece_counter[work_place]] << endl;
+			//	cout << "原因4" << endl;
+			//	//for (auto a : all_workpiece_pre_seq[work_place]) {
+			//	//	cout << work_place << " " << a << " " << endl;
+			//	//}
+			//}
+			return false;
+		}
+
+	}
+	//5.网格加工过程当中需要进行按照系列号批量加工
+	if (tran_ptr->pre_places[0] == "pc1") {
+		auto pre_iter = curr_node->marking.find("pc1");
+		if (pre_iter != curr_node->marking.end()) {
+			for (int i = 0; i < pre_grid_workpiece_place.size(); i++) {
+				auto& prework_place = pre_grid_workpiece_place[i];
+				auto iter = curr_node->marking.find(prework_place);
+				if (iter != curr_node->marking.end()) {
+					if (iter->second->token_attribute->workpiece->serial_id != pre_iter->second->token_attribute->workpiece->serial_id) {
+						//if (trans_name == "t_c.3-4.1") {
+						//	cout << "原因5" << endl;
+						//	cout << pre_iter->second->token_attribute->workpiece->numid<<" ";
+						//	cout << iter->second->token_attribute->workpiece->numid<<endl;
+
+						//}
+						return false;
+					}
+				}
 			}
 		}
 	}
-
-	//5.特殊处理连续激发
-	else if (trans_name == "t_b.10-11" || trans_name == "t_c.10-11" || trans_name == "t_e.4-5" || trans_name == "t_f.4-5") {
+	//6.特殊处理连续激发
+	if (trans_name == "t_b.10-11" || trans_name == "t_c.10-11" || trans_name == "t_e.4-5" || trans_name == "t_f.4-5") {
 		if (curr_node->already_workpiece[curr_node->counter] == -1) {
 			return false;
 		}
@@ -152,13 +226,13 @@ bool Petrinet::judge_possible_firable_trans(const shared_ptr<Node>& curr_node, c
 			return false;
 		}
 	}
-
+	//if (trans_name == "t_b.3-4.1")cout << "通过了3-4.1" << endl;
 	return true;
 
 
 }
 
-priority_queue<pair<int, string>, vector<pair<int, string>>, Petrinet::CompareLambda> Petrinet::search_firable_transition(shared_ptr<Node>& node)
+priority_queue<pair<int, string>, vector<pair<int, string>>, Petrinet::CompareLambda> Petrinet::search_firable_transition(shared_ptr<Node>& node, const vector<vector<int>> grid_pre_workpiece_seq)
 {
 
 	priority_queue<pair<int, string>, vector<pair<int, string>>, Petrinet::CompareLambda> firable_trans;
@@ -173,7 +247,10 @@ priority_queue<pair<int, string>, vector<pair<int, string>>, Petrinet::CompareLa
 			const auto& curr_place = places[firable_pre_place[0]];
 			const auto& curr_token = node->marking.find(firable_pre_place[0])->second;
 
-			if (curr_place->is_time_place) {
+			if (curr_place->is_time_place && curr_place->place_name.find("pc2") != string::npos) {
+				firable_trans.push({ compute_lambda(it,node,grid_pre_workpiece_seq) ,it });
+			}
+			else if (curr_place->is_time_place) {
 				firable_trans.push({ compute_lambda(it,node) ,it });
 			}
 			else {
@@ -184,6 +261,8 @@ priority_queue<pair<int, string>, vector<pair<int, string>>, Petrinet::CompareLa
 	}
 	return firable_trans;
 }
+
+
 
 
 
@@ -249,7 +328,7 @@ void Petrinet::group_Fire(shared_ptr<Node>curr_node, int lambda) {
 	curr_node->counter++;
 	return;
 }
-void Petrinet::single_Fire(const string& trans_name, shared_ptr<Node>curr_node, int lambda) {//单步激发
+void Petrinet::single_Fire(const string& trans_name, shared_ptr<Node>curr_node, int lambda, vector<vector<int>>grid_pre_workpiece_seq) {//单步激发
 	auto& trans = transitions[trans_name];
 	vector<shared_ptr<TokenAttribute>> token_attribute_set;
 	token_attribute_set.reserve(trans->pre_places.size());
@@ -258,8 +337,16 @@ void Petrinet::single_Fire(const string& trans_name, shared_ptr<Node>curr_node, 
 	//更新token的等待时间
 	for (auto& [place, token] : curr_node->marking) {
 		shared_ptr<Place> const& curr_place = places[place];
+		if (curr_place->is_time_place && place.find("pc2") != string::npos) {
+			token->waiting_time += lambda;
+			int delay = compute_delay(token, grid_pre_workpiece_seq);
 
-		if (curr_place->is_time_place) {
+			if (token->waiting_time > delay) {
+
+				token->waiting_time = delay;
+			}
+		}
+		else if (curr_place->is_time_place) {
 			token->waiting_time += lambda;
 			int delay = compute_delay(token);
 
@@ -268,19 +355,67 @@ void Petrinet::single_Fire(const string& trans_name, shared_ptr<Node>curr_node, 
 			}
 		}
 	}
-	if (trans->place_lock) {
-		string& brench_place = trans->post_places[0];
-		for (string cheak_place : trans->pre_places) {
-			if (places[cheak_place]->color == PlaceColor::Workpiece) {
-				auto token_it = curr_node->marking.find(cheak_place);
-				if (token_it != curr_node->marking.end()) {
-					auto& workpiece_assemble_place = token_it->second->token_attribute->workpiece->assemble_place[brench_place];
+	//if (trans->place_lock) {
+	//	string& brench_place = trans->post_places[0];
+	//	for (string cheak_place : trans->pre_places) {
+	//		if (places[cheak_place]->color == PlaceColor::Workpiece) {
+	//			if (token_it != curr_node->marking.end()) {
+	//				auto& workpiece_assemble_place = token_it->second->token_attribute->workpiece->assemble_place[brench_place];
+	//				place_workpiece_counter[workpiece_assemble_place] += 1;
+	//			}
+	//		}
+	//	}
+	//}
+	if (trans->place_check) {
+		string& brench_place = trans->pre_places[0];
+		//对于门板和网格预装结束之后送到加工位置的两个库所需要进行列表挑选并按顺序进入，其实就是pb3和pc3
+		if (brench_place == "pc3" || brench_place == "pb3" || brench_place == "pc1"/*places[brench_place]->color == PlaceColor::Workpiece&&brench_place!="pc1"*/) {
+			auto range = curr_node->marking.equal_range(brench_place);
+
+			//for (auto& it = range.first; it != range.second; it++) {	
+			//	cout << it->second->token_attribute->workpiece->numid << endl;
+			//}
+
+			for (auto& it = range.first; it != range.second; ++it) {
+				//cout << it->second->token_attribute->workpiece->numid<<endl;
+				auto& workpiece_assemble_place = it->second->token_attribute->workpiece->assemble_place[brench_place];
+
+				string  work_place;
+				for (auto& place : trans->post_places) {
+					if (places[place]->color == PlaceColor::Workpiece) {
+						work_place = place;
+					}
+				}
+				if (workpiece_assemble_place != work_place)continue;
+
+			//cout << it->second->token_attribute->workpiece->numid << endl;
+			//cout << all_workpiece_pre_seq[workpiece_assemble_place][place_workpiece_counter[workpiece_assemble_place]] << endl;
+			//cout << place_workpiece_counter[workpiece_assemble_place] << " ";
+			//cout << workpiece_assemble_place << endl;
+
+				if (it->second->token_attribute->workpiece->numid == all_workpiece_pre_seq[workpiece_assemble_place][place_workpiece_counter[workpiece_assemble_place]]) {
+					if (workpiece_assemble_place == "pc2_1") {
+						for (auto& place : pre_grid_workpiece_place) {
+							if (place_workpiece_counter[place] == place_workpiece_counter[workpiece_assemble_place] - 1 && all_workpiece_pre_seq[place][place_workpiece_counter[place]] == -1) {
+								place_workpiece_counter[place] += 1;
+							}
+						}
+					}
+
+
+					for (const string& pre_place_name : trans->pre_places) {
+						token_attribute_set.push_back(it->second->token_attribute);
+						remove_token(curr_node, it);
+					}
+					for (const string& post_place_name : trans->post_places) {
+						create_token(curr_node, post_place_name, token_attribute_set);
+					}
 					place_workpiece_counter[workpiece_assemble_place] += 1;
+					return;
 				}
 			}
 		}
 	}
-
 
 	for (const string& pre_place_name : trans->pre_places) {
 		auto token_iter = curr_node->marking.find(pre_place_name);//默认删第一个token的位置
@@ -376,7 +511,7 @@ void Petrinet::create_token(shared_ptr<Node> curr_node, string place_name, vecto
 			//cout << "工件" << wp_ptr->numid << "已经准备好" << endl;
 		}
 	}
-
+	//Token::print_token(new_token);
 }
 
 int Petrinet::seq_Fire(shared_ptr<Node> node,
@@ -396,6 +531,13 @@ int Petrinet::seq_Fire(shared_ptr<Node> node,
 	init_assembly_workpiece(assembly_workpiece_workplace_seq);
 	cout << "初始化完成" << endl;
 	//这块之后写到初始化网当中
+	//for (auto& [a, b] : all_workpiece_pre_seq) {
+	//	cout << a << "  ";
+	//	for (auto c : b) {
+	//		cout << c << "  ";
+	//	}
+	//	cout << endl;
+	//}
 	trans_group.push_back(transitions["t_b.10-11"]);
 	trans_group.push_back(transitions["t_b.11-12"]);
 	trans_group.push_back(transitions["t_c.10-11"]);
@@ -405,8 +547,10 @@ int Petrinet::seq_Fire(shared_ptr<Node> node,
 	trans_group.push_back(transitions["t_f.4-5"]);
 	trans_group.push_back(transitions["t_f.5-6"]);
 
-	candidate_transition = search_firable_transition(node);
+	candidate_transition = search_firable_transition(node, grid_pre_workpiece_seq);
 	while (!candidate_transition.empty()) {
+
+		//if (node->cost > 20)break;
 		pair<int, string> curr_trans = candidate_transition.top();
 		const string& trans_name = curr_trans.second;
 		const int lambda = curr_trans.first;
@@ -417,13 +561,12 @@ int Petrinet::seq_Fire(shared_ptr<Node> node,
 			//print_marking(node, trans_name, lambda);
 		}
 		else {
-
-			single_Fire(trans_name, node, lambda);
+			single_Fire(trans_name, node, lambda, grid_pre_workpiece_seq);
 			//if(trans_name=="t_b.5-6.1")
 			cout << "当前激发变迁" << trans_name << "  λ=" << lambda << "  激发代价" << node->cost << endl;
 			//print_marking(node, trans_name, lambda);
 		}
-		candidate_transition = search_firable_transition(node);
+		candidate_transition = search_firable_transition(node, grid_pre_workpiece_seq);
 
 	}
 	return node->cost;
@@ -437,6 +580,32 @@ int Petrinet::compute_delay(shared_ptr<Token> curr_token) {
 			curr_token->token_attribute->workpiece->per_worktime[curr_place->stage]));
 	return time;
 }
+int Petrinet::compute_delay(shared_ptr<Token> token, const vector<vector<int>> grid_pre_workpiece_seq) {
+	int token_id = token->token_attribute->workpiece->numid;
+	int index_i = 0, index_j = 0, index_i_size = 0;
+	float efficent = 1;
+	for (int i = 0; i < grid_pre_workpiece_seq.size(); ++i) {
+		bool cheak = false;
+		for (int j = 0; j < grid_pre_workpiece_seq[i].size(); ++j) {
+			if (grid_pre_workpiece_seq[i][j] == token_id) {
+				index_i = i, index_j = j, index_i_size = grid_pre_workpiece_seq[i].size();
+				cheak = true;
+				break;
+			}
+		}
+		if (cheak)break;
+	}
+	int grid_time = workpiece_id[token_id]->per_worktime[3];
+	if (index_i_size >= 8 && index_i_size <= 10)efficent = 0.7;
+	else if (index_i_size >= 5 && index_i_size <= 7)efficent = 0.8;
+	else if (index_i_size >= 2 && index_i_size <= 4)efficent = 0.9;
+	else if (index_i_size == 1)efficent = 1;
+	else efficent = INFINITY;
+	int delay = static_cast<int>(round(grid_time * index_i_size * efficent / grid_pre));
+
+	return delay;
+}
+
 int Petrinet::compute_lambda(const string& trans_name, shared_ptr<Node>& curr_node) {
 	auto& tran_ptr = transitions[trans_name];
 	auto& m = curr_node->marking;
@@ -456,15 +625,33 @@ int Petrinet::compute_lambda(const string& trans_name, shared_ptr<Node>& curr_no
 	}
 	return maxlambda;
 }
+int Petrinet::compute_lambda(const string& trans_name, shared_ptr<Node>& curr_node, const vector<vector<int>> grid_pre_workpiece_seq) {
+	auto& tran_ptr = transitions[trans_name];
+	auto& m = curr_node->marking;
+
+	int maxlambda = 0;
+	for (string pre_place_name : tran_ptr->pre_places) {
+		auto& pre_place_ptr = places[pre_place_name];
+		if (pre_place_ptr->is_time_place) {
+			if (m.find(pre_place_name) == m.end())return -1;
+			const auto& curr_token = m.find(pre_place_name)->second;
+
+			int curr_lambda = compute_delay(curr_token, grid_pre_workpiece_seq) - curr_token->waiting_time;
+			//cout << "当前token：" << curr_token->token_attribute->workpiece->numid  << "lambda:" << curr_lambda;
+			if (maxlambda < curr_lambda) {
+				maxlambda = curr_lambda;
+			}
+		}
+	}
+	return maxlambda;
+}
 //***********************************************************初始化*****************************************************************
 shared_ptr<Node> Petrinet::init_node(shared_ptr<Node> node, const vector<vector<int>>& door_pre_workpiece_seq, const vector<vector<int>>& grid_pre_workpiece_seq, const vector<int>& robot_workpiece_seq) {
 	node->marking.clear();
 	node->cost = 0;
 	node->already_workpiece.resize(100, -1);
 	if (door_pre_workpiece_seq.size() != init_door_places.size()) { cout << "传入门板二维数组与需要初始化的库所维度不匹配" << endl; return nullptr; }
-	if (grid_pre_workpiece_seq.size() != init_grid_places.size()) { cout << "数组尺寸" << grid_pre_workpiece_seq.size() << "网格库所尺寸" << init_grid_places.size() << "传入网格二维数组与需要初始化的库所维度不匹配" << endl; return nullptr; }
-	if (door_pre_workpiece_seq.size() == init_door_places.size()) { cout << "数组尺寸" << door_pre_workpiece_seq.size() << "网格库所尺寸" << init_door_places.size() << endl; }
-	if (grid_pre_workpiece_seq.size() == init_grid_places.size()) { cout << "数组尺寸" << grid_pre_workpiece_seq.size() << "网格库所尺寸" << init_grid_places.size() << endl; }
+	if (door_pre_workpiece_seq.size() == init_door_places.size()) { cout << "数组尺寸" << door_pre_workpiece_seq.size() << "门板库所尺寸" << init_door_places.size() << endl; }
 
 
 	for (int i = 0; i < door_pre_workpiece_seq.size(); ++i) {
@@ -477,16 +664,40 @@ shared_ptr<Node> Petrinet::init_node(shared_ptr<Node> node, const vector<vector<
 
 		}
 	}
+	//for (int i = 0; i < grid_pre_workpiece_seq.size(); ++i) {
+	//	auto& place_name = init_grid_places[i];
+	//	for (int id : grid_pre_workpiece_seq[i]) {
+
+	//		auto new_token = make_shared<Token>(place_name, make_shared<TokenAttribute>(PlaceColor::Workpiece, workpiece_id[id], nullptr, nullptr));
+	//		node->marking.emplace(place_name, new_token);
+	//		//workpiece_to_tokens[workpiece_id[id]].push_back(new_token);
+
+	//	}
+	//}
+
 	for (int i = 0; i < grid_pre_workpiece_seq.size(); ++i) {
-		auto& place_name = init_grid_places[i];
-		for (int id : grid_pre_workpiece_seq[i]) {
+		auto& place_name = init_grid_places[0];
+		int x = grid_pre_workpiece_seq[i].size();
+		for (int j = 0; j < grid_pre_workpiece_seq[i].size(); ++j) {
+			int id = grid_pre_workpiece_seq[i][j];
+			workpiece_id[id]->assemble_place.emplace("pc1", pre_grid_workpiece_place[j]);
+			all_workpiece_pre_seq[pre_grid_workpiece_place[j]].push_back(id);
+			//cout << all_workpiece_pre_seq[pre_grid_workpiece_place[j]].size() << endl;
 
 			auto new_token = make_shared<Token>(place_name, make_shared<TokenAttribute>(PlaceColor::Workpiece, workpiece_id[id], nullptr, nullptr));
 			node->marking.emplace(place_name, new_token);
-			//workpiece_to_tokens[workpiece_id[id]].push_back(new_token);
-
+		}
+		while (x < 10) {
+			all_workpiece_pre_seq[pre_grid_workpiece_place[x]].push_back(-1);
+			x++;
 		}
 	}
+
+	for (int i = 0; i < pre_grid_workpiece_place.size(); ++i) {
+		place_workpiece_counter[pre_grid_workpiece_place[i]] = 0;
+	}
+
+
 	for (int id = 0; id < robot_workpiece_seq.size(); ++id) {
 		string top_place_name = "pe0";
 		string bottom_place_name = "pf0";
@@ -501,10 +712,6 @@ shared_ptr<Node> Petrinet::init_node(shared_ptr<Node> node, const vector<vector<
 		//workpiece_to_tokens[workpiece_id[robot_workpiece_seq[id]]].push_back(bottom_new_token);
 
 	}
-	auto rgv_b_token = make_shared<Token>("prgv_b", make_shared<TokenAttribute>(PlaceColor::Device, nullptr, make_shared<Device>("rgv_b"), nullptr));
-	node->marking.emplace("prgv_b", rgv_b_token);
-	auto rgv_c_token = make_shared<Token>("prgv_c", make_shared<TokenAttribute>(PlaceColor::Device, nullptr, make_shared<Device>("rgv_c"), nullptr));
-	node->marking.emplace("prgv_c", rgv_c_token);
 	auto agv_a_token = make_shared<Token>("pagv_a", make_shared<TokenAttribute>(PlaceColor::Device, nullptr, make_shared<Device>("agv_a"), nullptr));
 	node->marking.emplace("pagv_a", agv_a_token);
 	auto agv_d_token = make_shared<Token>("pagv_d", make_shared<TokenAttribute>(PlaceColor::Device, nullptr, make_shared<Device>("agv_d"), nullptr));
@@ -536,7 +743,6 @@ void Petrinet::init_door_workpiece(const vector<vector<int>>& door_workpiece_wor
 			place_workpiece_counter[door_workpiece_place[i]] = 0;
 		}
 	}
-
 
 	cout << "门板工件初始化完成" << endl;
 }

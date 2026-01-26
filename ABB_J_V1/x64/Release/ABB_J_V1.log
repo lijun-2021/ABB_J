@@ -1,0 +1,12 @@
+﻿  Petrinet.cpp
+D:\ABB\0119\ABB_J\Petrinet.cpp(591,76): warning C4267: “=”: 从“size_t”转换到“int”，可能丢失数据
+D:\ABB\0119\ABB_J\Petrinet.cpp(599,57): warning C4305: “=”: 从“double”到“float”截断
+D:\ABB\0119\ABB_J\Petrinet.cpp(600,61): warning C4305: “=”: 从“double”到“float”截断
+D:\ABB\0119\ABB_J\Petrinet.cpp(601,61): warning C4305: “=”: 从“double”到“float”截断
+D:\ABB\0119\ABB_J\Petrinet.cpp(680,9): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+  正在生成代码
+  2 of 2941 functions (<0.1%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    5 functions had inline decision re-evaluated but remain unchanged
+  已完成代码的生成
+  ABB_J_V1.vcxproj -> D:\ABB\0119\ABB_J\x64\Release\ABB_J_V1.exe

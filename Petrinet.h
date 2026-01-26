@@ -2,6 +2,7 @@
 #include"Place.h"
 #include"Transition.h"
 #include"Token.h"
+#include"A_constants.h"
 #include<unordered_set>
 #include<set>
 #include<queue>
@@ -27,8 +28,8 @@ public:
 
 	multimap<string, shared_ptr<Token>>m0;//初始状态{"inplace":托肯指针}
 	vector<shared_ptr<Transition>> trans_group;//需要连续激发的变迁
-	unordered_map<string, vector<int>> all_workpiece_pre_seq;
-	unordered_map<string, int> place_workpiece_counter;
+	unordered_map<string, vector<int>> all_workpiece_pre_seq;//string为库所名（pc2_1-pc2_10,pb4_1-pb4-16以及pc4_1-pc4_10:工件加工的序列）
+	unordered_map<string, int> place_workpiece_counter;//工位对应的计数器，用于记录每个工位加工到哪里了
 
 	//---------------------对应关系表----------------------
 
@@ -37,6 +38,7 @@ public:
 	vector<string>init_grid_places;//（固定表)
 	vector<string> door_workpiece_place;	//传入的门板数组转成库所名（固定表）（0-15：pb4_1-pb4-16）
 	vector<string> grid_workpiece_place;	//传入的网格数组转成库所名（固定表）（0-9：pc4_1-pc4-10）
+	vector<string> pre_grid_workpiece_place;//传入的预装网格数组转成库所名（固定表）（0-9：pc1_1-pc1-10）
 	vector<string> assembly_workpiece_place;//传入的总成数组转成库所名（固定表）（0-14：pd2_1-pd2-15）
 
 
@@ -48,14 +50,16 @@ public:
 			return a.second > b.second;
 		}
 	};
+	int compute_delay(shared_ptr<Token> token, const vector<vector<int>> grid_pre_workpiece_seq);
 
 	//priority_queue<pair<int, string>, vector<pair<int, string>>, Petrinet::CompareLambda> search_firable_transition(const multimap<string, shared_ptr<Token>>& m, const unordered_map<string, int>& ctrl_m);
 	//寻找可激发变迁  F1
 	set<string>Get_possible_firable_trans(const multimap<string, shared_ptr<Token>>& m);//存储有token的库所其后置变迁可能是可激发变迁，并用中间变量（possible_firable_trans）存储 F1-1
 	bool judge_possible_firable_trans(const shared_ptr<Node>& curr_node, const string& trans_name);
-	priority_queue<pair<int, string>, vector<pair<int, string>>, Petrinet::CompareLambda> search_firable_transition(shared_ptr<Node>& node);
+	priority_queue<pair<int, string>, vector<pair<int, string>>, Petrinet::CompareLambda> search_firable_transition(shared_ptr<Node>& node, const vector<vector<int>> grid_pre_workpiece_seq);
 	void group_Fire(shared_ptr<Node> curr_node, int lambda);
-	void single_Fire(const string& trans_name, shared_ptr<Node> curr_node, int lambda);
+	void single_Fire(const string& trans_name, shared_ptr<Node> curr_node, int lambda, vector<vector<int>> grid_pre_workpiece_seq);
+
 
 	void create_token(shared_ptr<Node> curr_node, string place_name, vector<shared_ptr<TokenAttribute>>& attrs);
 	int seq_Fire(shared_ptr<Node> node, const vector<vector<int>>& door_pre_workpiece_seq, const vector<vector<int>>& grid_pre_workpiece_seq, const vector<int>& robot_workpiece_seq, const vector<vector<int>>& door_workpiece_workplace_seq, const vector<vector<int>>& grid_workpiece_workplace_seq, const vector<vector<int>>& assembly_workpiece_workplace_seq);
@@ -64,6 +68,7 @@ public:
 
 	int compute_delay(shared_ptr<Token> curr_token);
 	int compute_lambda(const string& trans_name, shared_ptr<Node>& curr_node);
+	int compute_lambda(const string& trans_name, shared_ptr<Node>& curr_node, const vector<vector<int>> grid_pre_workpiece_seq);
 	shared_ptr<Node> init_node(shared_ptr<Node> node, const vector<vector<int>>& door_pre_workpiece_seq, const vector<vector<int>>& grid_pre_workpiece_seq, const vector<int>& robot_workpiece_seq);
 	void init_door_workpiece(const vector<vector<int>>& door_workpiece_workplace);
 	void init_grid_workpiece(const vector<vector<int>>& grid_workpiece_workplace_seq);

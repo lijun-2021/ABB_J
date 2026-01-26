@@ -174,10 +174,12 @@ inline void read_tokens_json(Petrinet& petrinet) {
 
     //auto test = doc["original_state"].GetObject().begin()->value["inplace"].GetString();
     for (auto itr1 = doc["original_state"].GetObject().begin(); itr1 != doc["original_state"].GetObject().end(); ++itr1) {
+        
         auto workpiece_ptr = make_shared<Workpiece>();
         workpiece_ptr->ID = itr1->name.GetString();
         workpiece_ptr->numid = itr1->value["ID"].GetInt();
-
+        workpiece_ptr->order_id = itr1->value["orderID"].GetString();//新增订单号
+        workpiece_ptr->serial_id = itr1->value["serialID"].GetString();//新增序列号
         rapidjson::Value::Array arr = itr1->value["per_worktime"].GetArray();
         for (const auto& elem : arr) {
             int val = elem.IsInt() ? elem.GetInt() : 0;
@@ -196,8 +198,6 @@ inline void read_tokens_json(Petrinet& petrinet) {
         petrinet.workpiece_id.push_back(workpiece_ptr);
 
 
-
-        //std::cout << " num " << workpiece_ptr->numid << " ptr " << workpiece_ptr << std::endl;
     }
     N = assembly_work_time.size();
     //for (auto& [name, ptr] : petrinet.workpiece_id) {

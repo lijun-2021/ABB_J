@@ -30,9 +30,6 @@
     <ClCompile Include="Token.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="A_constants.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="A_optimization.cpp">
       <Filter>源文件</Filter>
     </ClCompile>

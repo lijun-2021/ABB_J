@@ -1,14 +1,5 @@
 {
-  "prgv_b": {
-    "capacity": 1,
-    "pre_arcs": [ "t_b.7-8", "t_b.3-4.1", "t_b.3-4.2", "t_b.3-4.3", "t_b.3-4.4", "t_b.3-4.5", "t_b.3-4.6", "t_b.3-4.7", "t_b.3-4.8", "t_b.3-4.9", "t_b.3-4.10", "t_b.3-4.11", "t_b.3-4.12", "t_b.3-4.13", "t_b.3-4.14", "t_b.3-4.15", "t_b.3-4.16" ],
-    "post_arcs": [ "t_b.6-7.1", "t_b.6-7.2", "t_b.6-7.3", "t_b.6-7.4", "t_b.6-7.5", "t_b.6-7.6", "t_b.6-7.7", "t_b.6-7.8", "t_b.6-7.9", "t_b.6-7.10", "t_b.6-7.11", "t_b.6-7.12", "t_b.6-7.13", "t_b.6-7.14", "t_b.6-7.15", "t_b.6-7.16", "t_b.2-3.1", "t_b.2-3.2", "t_b.2-3.3", "t_b.2-3.4" ],
-    "is_control_place": true,
-    "is_time_place": false,
-    "proficiency": 1,
-    "stage": 0,
-    "color": "Device"
-  },
+
   "pb1_1": {
     "capacity": 100,
     "pre_arcs": [],
@@ -91,14 +82,14 @@
     "color": "Workpiece"
   },
   "pb3": {
-    "capacity": 1,
+    "capacity": 2,
     "pre_arcs": [ "t_b.2-3.1", "t_b.2-3.2", "t_b.2-3.3", "t_b.2-3.4" ],
     "post_arcs": [ "t_b.3-4.1", "t_b.3-4.2", "t_b.3-4.3", "t_b.3-4.4", "t_b.3-4.5", "t_b.3-4.6", "t_b.3-4.7", "t_b.3-4.8", "t_b.3-4.9", "t_b.3-4.10", "t_b.3-4.11", "t_b.3-4.12", "t_b.3-4.13", "t_b.3-4.14", "t_b.3-4.15", "t_b.3-4.16" ],
     "is_control_place": false,
     "is_time_place": false,
     "proficiency": 1,
     "stage": 0,
-    "color": "OnDevice"
+    "color": "Workpiece"
   },
   "pb4_1": {
     "capacity": 1,
@@ -588,7 +579,7 @@
     "is_time_place": false,
     "proficiency": 1,
     "stage": 0,
-    "color": "OnDevice"
+    "color": "Workpiece"
   },
   "pb8": {
     "capacity": 1,
@@ -642,60 +633,11 @@
   },
 
 
-  "prgv_c": {
-    "capacity": 1,
-    "pre_arcs": [ "t_c.7-8", "t_c.3-4.1", "t_c.3-4.2", "t_c.3-4.3", "t_c.3-4.4", "t_c.3-4.5", "t_c.3-4.6", "t_c.3-4.7", "t_c.3-4.8", "t_c.3-4.9", "t_c.3-4.10" ],
-    "post_arcs": [ "t_c.6-7.1", "t_c.6-7.2", "t_c.6-7.3", "t_c.6-7.4", "t_c.6-7.5", "t_c.6-7.6", "t_c.6-7.7", "t_c.6-7.8", "t_c.6-7.9", "t_c.6-7.10", "t_c.2-3.1", "t_c.2-3.2", "t_c.2-3.3", "t_c.2-3.4", "t_c.2-3.5" ],
-    "is_control_place": true,
-    "is_time_place": false,
-    "proficiency": 1,
-    "stage": 1,
-    "color": "Device"
-  },
-  "pc1_1": {
+
+  "pc1": {
     "capacity": 100,
     "pre_arcs": [],
-    "post_arcs": [ "t_c.1-2.1" ],
-    "is_control_place": false,
-    "is_time_place": false,
-    "proficiency": 1,
-    "stage": 0,
-    "color": "Workpiece"
-  },
-  "pc1_2": {
-    "capacity": 100,
-    "pre_arcs": [],
-    "post_arcs": [ "t_c.1-2.2" ],
-    "is_control_place": false,
-    "is_time_place": false,
-    "proficiency": 1,
-    "stage": 0,
-    "color": "Workpiece"
-  },
-  "pc1_3": {
-    "capacity": 100,
-    "pre_arcs": [],
-    "post_arcs": [ "t_c.1-2.3" ],
-    "is_control_place": false,
-    "is_time_place": false,
-    "proficiency": 1,
-    "stage": 0,
-    "color": "Workpiece"
-  },
-  "pc1_4": {
-    "capacity": 100,
-    "pre_arcs": [],
-    "post_arcs": [ "t_c.1-2.4" ],
-    "is_control_place": false,
-    "is_time_place": false,
-    "proficiency": 1,
-    "stage": 0,
-    "color": "Workpiece"
-  },
-  "pc1_5": {
-    "capacity": 100,
-    "pre_arcs": [],
-    "post_arcs": [ "t_c.1-2.5" ],
+    "post_arcs": [ "t_c.1-2.1","t_c.1-2.2","t_c.1-2.3","t_c.1-2.4","t_c.1-2.5","t_c.1-2.6","t_c.1-2.7","t_c.1-2.8","t_c.1-2.9","t_c.1-2.10" ],
     "is_control_place": false,
     "is_time_place": false,
     "proficiency": 1,
@@ -752,15 +694,65 @@
     "stage": 3,
     "color": "Workpiece"
   },
-  "pc3": {
+  "pc2_6": {
     "capacity": 1,
-    "pre_arcs": [ "t_c.2-3.1", "t_c.2-3.2", "t_c.2-3.3", "t_c.2-3.4", "t_c.2-3.5" ],
+    "pre_arcs": [ "t_c.1-2.6" ],
+    "post_arcs": [ "t_c.2-3.6" ],
+    "is_control_place": false,
+    "is_time_place": true,
+    "proficiency": 1,
+    "stage": 3,
+    "color": "Workpiece"
+  },
+  "pc2_7": {
+    "capacity": 1,
+    "pre_arcs": [ "t_c.1-2.7" ],
+    "post_arcs": [ "t_c.2-3.7" ],
+    "is_control_place": false,
+    "is_time_place": true,
+    "proficiency": 1,
+    "stage": 3,
+    "color": "Workpiece"
+  },
+  "pc2_8": {
+    "capacity": 1,
+    "pre_arcs": [ "t_c.1-2.8" ],
+    "post_arcs": [ "t_c.2-3.8" ],
+    "is_control_place": false,
+    "is_time_place": true,
+    "proficiency": 1,
+    "stage": 3,
+    "color": "Workpiece"
+  },
+  "pc2_9": {
+    "capacity": 1,
+    "pre_arcs": [ "t_c.1-2.9" ],
+    "post_arcs": [ "t_c.2-3.9" ],
+    "is_control_place": false,
+    "is_time_place": true,
+    "proficiency": 1,
+    "stage": 3,
+    "color": "Workpiece"
+  },
+  "pc2_10": {
+    "capacity": 1,
+    "pre_arcs": [ "t_c.1-2.10" ],
+    "post_arcs": [ "t_c.2-3.10" ],
+    "is_control_place": false,
+    "is_time_place": true,
+    "proficiency": 1,
+    "stage": 3,
+    "color": "Workpiece"
+  },
+  "pc3": {
+    "capacity": 2,
+    "pre_arcs": [ "t_c.2-3.1", "t_c.2-3.2", "t_c.2-3.3", "t_c.2-3.4", "t_c.2-3.5","t_c.2-3.6", "t_c.2-3.7", "t_c.2-3.8", "t_c.2-3.9", "t_c.2-3.10" ],
     "post_arcs": [ "t_c.3-4.1", "t_c.3-4.2", "t_c.3-4.3", "t_c.3-4.4", "t_c.3-4.5", "t_c.3-4.6", "t_c.3-4.7", "t_c.3-4.8", "t_c.3-4.9", "t_c.3-4.10" ],
     "is_control_place": false,
     "is_time_place": false,
     "proficiency": 1,
     "stage": 0,
-    "color": "OnDevice"
+    "color": "Workpiece"
   },
   "pc4_1": {
     "capacity": 1,
@@ -1070,7 +1062,7 @@
     "is_time_place": false,
     "proficiency": 1,
     "stage": 0,
-    "color": "OnDevice"
+    "color": "Workpiece"
   },
   "pc8": {
     "capacity": 1,

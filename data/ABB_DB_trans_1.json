@@ -24,122 +24,122 @@
     "place_check": false
   },
   "t_b.2-3.1": {
-    "pre_arcs": [ "pb2_1", "prgv_b" ],
+    "pre_arcs": [ "pb2_1"  ],
     "post_arcs": [ "pb3" ],
     "place_lock": true,
     "place_check": false
   },
   "t_b.2-3.2": {
-    "pre_arcs": [ "pb2_2", "prgv_b" ],
+    "pre_arcs": [ "pb2_2"  ],
     "post_arcs": [ "pb3" ],
     "place_lock": true,
     "place_check": false
   },
   "t_b.2-3.3": {
-    "pre_arcs": [ "pb2_3", "prgv_b" ],
+    "pre_arcs": [ "pb2_3"  ],
     "post_arcs": [ "pb3" ],
     "place_lock": true,
     "place_check": false
   },
   "t_b.2-3.4": {
-    "pre_arcs": [ "pb2_4", "prgv_b" ],
+    "pre_arcs": [ "pb2_4"  ],
     "post_arcs": [ "pb3" ],
     "place_lock": true,
     "place_check": false
   },
   "t_b.3-4.1": {
     "pre_arcs": [ "pb3" ],
-    "post_arcs": [ "pb4_1", "prgv_b" ],
+    "post_arcs": [ "pb4_1"  ],
     "place_lock": false,
     "place_check": true
   },
   "t_b.3-4.2": {
     "pre_arcs": [ "pb3" ],
-    "post_arcs": [ "pb4_2", "prgv_b" ],
+    "post_arcs": [ "pb4_2"  ],
     "place_lock": false,
     "place_check": true
   },
   "t_b.3-4.3": {
     "pre_arcs": [ "pb3" ],
-    "post_arcs": [ "pb4_3", "prgv_b" ],
+    "post_arcs": [ "pb4_3"  ],
     "place_lock": false,
     "place_check": true
   },
   "t_b.3-4.4": {
     "pre_arcs": [ "pb3" ],
-    "post_arcs": [ "pb4_4", "prgv_b" ],
+    "post_arcs": [ "pb4_4"  ],
     "place_lock": false,
     "place_check": true
   },
   "t_b.3-4.5": {
     "pre_arcs": [ "pb3" ],
-    "post_arcs": [ "pb4_5", "prgv_b" ],
+    "post_arcs": [ "pb4_5"  ],
     "place_lock": false,
     "place_check": true
   },
   "t_b.3-4.6": {
     "pre_arcs": [ "pb3" ],
-    "post_arcs": [ "pb4_6", "prgv_b" ],
+    "post_arcs": [ "pb4_6"  ],
     "place_lock": false,
     "place_check": true
   },
   "t_b.3-4.7": {
     "pre_arcs": [ "pb3" ],
-    "post_arcs": [ "pb4_7", "prgv_b" ],
+    "post_arcs": [ "pb4_7"  ],
     "place_lock": false,
     "place_check": true
   },
   "t_b.3-4.8": {
     "pre_arcs": [ "pb3" ],
-    "post_arcs": [ "pb4_8", "prgv_b" ],
+    "post_arcs": [ "pb4_8"  ],
     "place_lock": false,
     "place_check": true
   },
   "t_b.3-4.9": {
     "pre_arcs": [ "pb3" ],
-    "post_arcs": [ "pb4_9", "prgv_b" ],
+    "post_arcs": [ "pb4_9"  ],
     "place_lock": false,
     "place_check": true
   },
   "t_b.3-4.10": {
     "pre_arcs": [ "pb3" ],
-    "post_arcs": [ "pb4_10", "prgv_b" ],
+    "post_arcs": [ "pb4_10"  ],
     "place_lock": false,
     "place_check": true
   },
   "t_b.3-4.11": {
     "pre_arcs": [ "pb3" ],
-    "post_arcs": [ "pb4_11", "prgv_b" ],
+    "post_arcs": [ "pb4_11"  ],
     "place_lock": false,
     "place_check": true
   },
   "t_b.3-4.12": {
     "pre_arcs": [ "pb3" ],
-    "post_arcs": [ "pb4_12", "prgv_b" ],
+    "post_arcs": [ "pb4_12"  ],
     "place_lock": false,
     "place_check": true
   },
   "t_b.3-4.13": {
     "pre_arcs": [ "pb3" ],
-    "post_arcs": [ "pb4_13", "prgv_b" ],
+    "post_arcs": [ "pb4_13"  ],
     "place_lock": false,
     "place_check": true
   },
   "t_b.3-4.14": {
     "pre_arcs": [ "pb3" ],
-    "post_arcs": [ "pb4_14", "prgv_b" ],
+    "post_arcs": [ "pb4_14"  ],
     "place_lock": false,
     "place_check": true
   },
   "t_b.3-4.15": {
     "pre_arcs": [ "pb3" ],
-    "post_arcs": [ "pb4_15", "prgv_b" ],
+    "post_arcs": [ "pb4_15"  ],
     "place_lock": false,
     "place_check": true
   },
   "t_b.3-4.16": {
     "pre_arcs": [ "pb3" ],
-    "post_arcs": [ "pb4_16", "prgv_b" ],
+    "post_arcs": [ "pb4_16"  ],
     "place_lock": false,
     "place_check": true
   },
@@ -336,104 +336,104 @@
     "place_check": false
   },
   "t_b.6-7.1": {
-    "pre_arcs": [ "pb6_1", "prgv_b" ],
+    "pre_arcs": [ "pb6_1"  ],
     "post_arcs": [ "pb7" ],
     "place_lock": false,
     "place_check": false
   },
   "t_b.6-7.2": {
-    "pre_arcs": [ "pb6_2", "prgv_b" ],
+    "pre_arcs": [ "pb6_2"  ],
     "post_arcs": [ "pb7" ],
     "place_lock": false,
     "place_check": false
   },
   "t_b.6-7.3": {
-    "pre_arcs": [ "pb6_3", "prgv_b" ],
+    "pre_arcs": [ "pb6_3"  ],
     "post_arcs": [ "pb7" ],
     "place_lock": false,
     "place_check": false
   },
   "t_b.6-7.4": {
-    "pre_arcs": [ "pb6_4", "prgv_b" ],
+    "pre_arcs": [ "pb6_4"  ],
     "post_arcs": [ "pb7" ],
     "place_lock": false,
     "place_check": false
   },
   "t_b.6-7.5": {
-    "pre_arcs": [ "pb6_5", "prgv_b" ],
+    "pre_arcs": [ "pb6_5"  ],
     "post_arcs": [ "pb7" ],
     "place_lock": false,
     "place_check": false
   },
   "t_b.6-7.6": {
-    "pre_arcs": [ "pb6_6", "prgv_b" ],
+    "pre_arcs": [ "pb6_6"  ],
     "post_arcs": [ "pb7" ],
     "place_lock": false,
     "place_check": false
   },
   "t_b.6-7.7": {
-    "pre_arcs": [ "pb6_7", "prgv_b" ],
+    "pre_arcs": [ "pb6_7"  ],
     "post_arcs": [ "pb7" ],
     "place_lock": false,
     "place_check": false
   },
   "t_b.6-7.8": {
-    "pre_arcs": [ "pb6_8", "prgv_b" ],
+    "pre_arcs": [ "pb6_8"  ],
     "post_arcs": [ "pb7" ],
     "place_lock": false,
     "place_check": false
   },
   "t_b.6-7.9": {
-    "pre_arcs": [ "pb6_9", "prgv_b" ],
+    "pre_arcs": [ "pb6_9"  ],
     "post_arcs": [ "pb7" ],
     "place_lock": false,
     "place_check": false
   },
   "t_b.6-7.10": {
-    "pre_arcs": [ "pb6_10", "prgv_b" ],
+    "pre_arcs": [ "pb6_10"  ],
     "post_arcs": [ "pb7" ],
     "place_lock": false,
     "place_check": false
   },
   "t_b.6-7.11": {
-    "pre_arcs": [ "pb6_11", "prgv_b" ],
+    "pre_arcs": [ "pb6_11"  ],
     "post_arcs": [ "pb7" ],
     "place_lock": false,
     "place_check": false
   },
   "t_b.6-7.12": {
-    "pre_arcs": [ "pb6_12", "prgv_b" ],
+    "pre_arcs": [ "pb6_12"  ],
     "post_arcs": [ "pb7" ],
     "place_lock": false,
     "place_check": false
   },
   "t_b.6-7.13": {
-    "pre_arcs": [ "pb6_13", "prgv_b" ],
+    "pre_arcs": [ "pb6_13"  ],
     "post_arcs": [ "pb7" ],
     "place_lock": false,
     "place_check": false
   },
   "t_b.6-7.14": {
-    "pre_arcs": [ "pb6_14", "prgv_b" ],
+    "pre_arcs": [ "pb6_14"  ],
     "post_arcs": [ "pb7" ],
     "place_lock": false,
     "place_check": false
   },
   "t_b.6-7.15": {
-    "pre_arcs": [ "pb6_15", "prgv_b" ],
+    "pre_arcs": [ "pb6_15"  ],
     "post_arcs": [ "pb7" ],
     "place_lock": false,
     "place_check": false
   },
   "t_b.6-7.16": {
-    "pre_arcs": [ "pb6_16", "prgv_b" ],
+    "pre_arcs": [ "pb6_16"  ],
     "post_arcs": [ "pb7" ],
     "place_lock": false,
     "place_check": false
   },
   "t_b.7-8": {
     "pre_arcs": [ "pb7" ],
-    "post_arcs": [ "pb8", "prgv_b" ],
+    "post_arcs": [ "pb8"  ],
     "place_lock": false,
     "place_check": false
   },
@@ -469,122 +469,182 @@
   },
 
   "t_c.1-2.1": {
-    "pre_arcs": [ "pc1_1" ],
-    "post_arcs": [ "pc2_1" ],
+    "pre_arcs": [ "pc1" ],
+    "post_arcs": ["pc2_1"],
     "place_lock": false,
-    "place_check": false
+    "place_check": true
   },
   "t_c.1-2.2": {
-    "pre_arcs": [ "pc1_2" ],
+    "pre_arcs": [ "pc1" ],
     "post_arcs": [ "pc2_2" ],
     "place_lock": false,
-    "place_check": false
+    "place_check": true
   },
   "t_c.1-2.3": {
-    "pre_arcs": [ "pc1_3" ],
+    "pre_arcs": [ "pc1" ],
     "post_arcs": [ "pc2_3" ],
     "place_lock": false,
-    "place_check": false
+    "place_check": true
   },
   "t_c.1-2.4": {
-    "pre_arcs": [ "pc1_4" ],
+    "pre_arcs": [ "pc1" ],
     "post_arcs": [ "pc2_4" ],
     "place_lock": false,
-    "place_check": false
+    "place_check": true
   },
   "t_c.1-2.5": {
-    "pre_arcs": [ "pc1_5" ],
+    "pre_arcs": [ "pc1" ],
     "post_arcs": [ "pc2_5" ],
     "place_lock": false,
-    "place_check": false
+    "place_check": true
+  },
+  "t_c.1-2.6": {
+    "pre_arcs": [ "pc1" ],
+    "post_arcs": [ "pc2_6" ],
+    "place_lock": false,
+    "place_check": true
+  },
+  "t_c.1-2.7": {
+    "pre_arcs": [ "pc1" ],
+    "post_arcs": [ "pc2_7" ],
+    "place_lock": false,
+    "place_check": true
+  },
+  "t_c.1-2.8": {
+    "pre_arcs": [ "pc1" ],
+    "post_arcs": [ "pc2_8" ],
+    "place_lock": false,
+    "place_check": true
+  },
+  "t_c.1-2.9": {
+    "pre_arcs": [ "pc1" ],
+    "post_arcs": [ "pc2_9" ],
+    "place_lock": false,
+    "place_check": true
+  },
+  "t_c.1-2.10": {
+    "pre_arcs": [ "pc1" ],
+    "post_arcs": [ "pc2_10" ],
+    "place_lock": false,
+    "place_check": true
   },
   "t_c.2-3.1": {
-    "pre_arcs": [ "pc2_1", "prgv_c" ],
+    "pre_arcs": [ "pc2_1"  ],
     "post_arcs": [ "pc3" ],
-    "place_lock": true,
+    "place_lock": false,
     "place_check": false
   },
   "t_c.2-3.2": {
-    "pre_arcs": [ "pc2_2", "prgv_c" ],
+    "pre_arcs": [ "pc2_2"  ],
     "post_arcs": [ "pc3" ],
-    "place_lock": true,
+    "place_lock": false,
     "place_check": false
   },
   "t_c.2-3.3": {
-    "pre_arcs": [ "pc2_3", "prgv_c" ],
+    "pre_arcs": [ "pc2_3"  ],
     "post_arcs": [ "pc3" ],
-    "place_lock": true,
+    "place_lock":   false,
     "place_check": false
   },
   "t_c.2-3.4": {
-    "pre_arcs": [ "pc2_4", "prgv_c" ],
+    "pre_arcs": [ "pc2_4"  ],
     "post_arcs": [ "pc3" ],
-    "place_lock": true,
+    "place_lock":   false,
     "place_check": false
   },
   "t_c.2-3.5": {
-    "pre_arcs": [ "pc2_5", "prgv_c" ],
+    "pre_arcs": [ "pc2_5"  ],
     "post_arcs": [ "pc3" ],
-    "place_lock": true,
+    "place_lock":   false,
+    "place_check": false
+  },
+  "t_c.2-3.6": {
+    "pre_arcs": [ "pc2_6"  ],
+    "post_arcs": [ "pc3" ],
+    "place_lock":   false,
+    "place_check": false
+  },
+  "t_c.2-3.7": {
+    "pre_arcs": [ "pc2_7"  ],
+    "post_arcs": [ "pc3" ],
+    "place_lock":   false,
+    "place_check": false
+  },
+  "t_c.2-3.8": {
+    "pre_arcs": [ "pc2_8"  ],
+    "post_arcs": [ "pc3" ],
+    "place_lock":   false,
+    "place_check": false
+  },
+  "t_c.2-3.9": {
+    "pre_arcs": [ "pc2_9"  ],
+    "post_arcs": [ "pc3" ],
+    "place_lock":   false,
+    "place_check": false
+  },
+  "t_c.2-3.10": {
+    "pre_arcs": [ "pc2_10"  ],
+    "post_arcs": [ "pc3" ],
+    "place_lock":   false,
     "place_check": false
   },
   "t_c.3-4.1": {
     "pre_arcs": [ "pc3" ],
-    "post_arcs": [ "pc4_1", "prgv_c" ],
+    "post_arcs": [ "pc4_1"  ],
     "place_lock": false,
     "place_check": true
   },
   "t_c.3-4.2": {
     "pre_arcs": [ "pc3" ],
-    "post_arcs": [ "pc4_2", "prgv_c" ],
+    "post_arcs": [ "pc4_2"  ],
     "place_lock": false,
     "place_check": true
   },
   "t_c.3-4.3": {
     "pre_arcs": [ "pc3" ],
-    "post_arcs": [ "pc4_3", "prgv_c" ],
+    "post_arcs": [ "pc4_3"  ],
     "place_lock": false,
     "place_check": true
   },
   "t_c.3-4.4": {
     "pre_arcs": [ "pc3" ],
-    "post_arcs": [ "pc4_4", "prgv_c" ],
+    "post_arcs": [ "pc4_4"  ],
     "place_lock": false,
     "place_check": true
   },
   "t_c.3-4.5": {
     "pre_arcs": [ "pc3" ],
-    "post_arcs": [ "pc4_5", "prgv_c" ],
+    "post_arcs": [ "pc4_5"  ],
     "place_lock": false,
     "place_check": true
   },
   "t_c.3-4.6": {
     "pre_arcs": [ "pc3" ],
-    "post_arcs": [ "pc4_6", "prgv_c" ],
+    "post_arcs": [ "pc4_6"  ],
     "place_lock": false,
     "place_check": true
   },
   "t_c.3-4.7": {
     "pre_arcs": [ "pc3" ],
-    "post_arcs": [ "pc4_7", "prgv_c" ],
+    "post_arcs": [ "pc4_7"  ],
     "place_lock": false,
     "place_check": true
   },
   "t_c.3-4.8": {
     "pre_arcs": [ "pc3" ],
-    "post_arcs": [ "pc4_8", "prgv_c" ],
+    "post_arcs": [ "pc4_8"  ],
     "place_lock": false,
     "place_check": true
   },
   "t_c.3-4.9": {
     "pre_arcs": [ "pc3" ],
-    "post_arcs": [ "pc4_9", "prgv_c" ],
+    "post_arcs": [ "pc4_9"  ],
     "place_lock": false,
     "place_check": true
   },
   "t_c.3-4.10": {
     "pre_arcs": [ "pc3" ],
-    "post_arcs": [ "pc4_10", "prgv_c" ],
+    "post_arcs": [ "pc4_10"  ],
     "place_lock": false,
     "place_check": true
   },
@@ -709,68 +769,68 @@
     "place_check": false
   },
   "t_c.6-7.1": {
-    "pre_arcs": [ "pc6_1", "prgv_c" ],
+    "pre_arcs": [ "pc6_1"  ],
     "post_arcs": [ "pc7" ],
     "place_lock": false,
     "place_check": false
   },
   "t_c.6-7.2": {
-    "pre_arcs": [ "pc6_2", "prgv_c" ],
+    "pre_arcs": [ "pc6_2"  ],
     "post_arcs": [ "pc7" ],
     "place_lock": false,
     "place_check": false
   },
   "t_c.6-7.3": {
-    "pre_arcs": [ "pc6_3", "prgv_c" ],
+    "pre_arcs": [ "pc6_3"  ],
     "post_arcs": [ "pc7" ],
     "place_lock": false,
     "place_check": false
   },
   "t_c.6-7.4": {
-    "pre_arcs": [ "pc6_4", "prgv_c" ],
+    "pre_arcs": [ "pc6_4"  ],
     "post_arcs": [ "pc7" ],
     "place_lock": false,
     "place_check": false
   },
   "t_c.6-7.5": {
-    "pre_arcs": [ "pc6_5", "prgv_c" ],
+    "pre_arcs": [ "pc6_5"  ],
     "post_arcs": [ "pc7" ],
     "place_lock": false,
     "place_check": false
   },
   "t_c.6-7.6": {
-    "pre_arcs": [ "pc6_6", "prgv_c" ],
+    "pre_arcs": [ "pc6_6"  ],
     "post_arcs": [ "pc7" ],
     "place_lock": false,
     "place_check": false
   },
   "t_c.6-7.7": {
-    "pre_arcs": [ "pc6_7", "prgv_c" ],
+    "pre_arcs": [ "pc6_7"  ],
     "post_arcs": [ "pc7" ],
     "place_lock": false,
     "place_check": false
   },
   "t_c.6-7.8": {
-    "pre_arcs": [ "pc6_8", "prgv_c" ],
+    "pre_arcs": [ "pc6_8"  ],
     "post_arcs": [ "pc7" ],
     "place_lock": false,
     "place_check": false
   },
   "t_c.6-7.9": {
-    "pre_arcs": [ "pc6_9", "prgv_c" ],
+    "pre_arcs": [ "pc6_9"  ],
     "post_arcs": [ "pc7" ],
     "place_lock": false,
     "place_check": false
   },
   "t_c.6-7.10": {
-    "pre_arcs": [ "pc6_10", "prgv_c" ],
+    "pre_arcs": [ "pc6_10"  ],
     "post_arcs": [ "pc7" ],
     "place_lock": false,
     "place_check": false
   },
   "t_c.7-8": {
     "pre_arcs": [ "pc7" ],
-    "post_arcs": [ "pc8", "prgv_c" ],
+    "post_arcs": [ "pc8"  ],
     "place_lock": false,
     "place_check": false
   },

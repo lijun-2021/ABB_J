@@ -75,7 +75,8 @@ OutputData generate_output_data(const std::vector<JobInfo>& job_info) {
     return output;
 }
 
-void print_output(const OutputData& output) {
+void 
+_output(const OutputData& output) {
     // 打印门板预装
     std::cout << "\n===== 门板预装 =====" << std::endl;
     for (int i = 0; i < output.door_pre.size(); ++i) {

@@ -36,11 +36,18 @@ public:
 class Workpiece {
 public:
 	string ID;//身份标识
+	string name_id;//K0
+	string order_id;//订单号（同一订单最好一起加工）
+	string serial_id;//系列号（同一系列号的工件是一样的，同一系列号的网格部分同时加工多个）
 	int numid;//数字id
+
 	vector<string> process_flow; // 工作流程<工序名称，所需设备名称>
 	shared_ptr<SpaceZone> space_zone;//所处空间区域
 	shared_ptr<Place> place;//所处库所
 	//vector<pair<string, shared_ptr<Transition>>>schedule;//工作流程调度<工序名称，变迁对象指针>
+
+
+
 	unordered_map<string, string> assemble_place;//(分支点库所：加工库所)
 	int robot_work = -1;//机器人加工顺序(-1为还未分配)
 	vector<int> per_worktime;//vector[stage] = 对应工序的加工时间
